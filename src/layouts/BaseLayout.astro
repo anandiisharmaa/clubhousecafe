@@ -32,7 +32,7 @@ const siteUrl = 'https://clubhousecafe.in';
 const pathname = Astro.url.pathname;
 const normalizedPath = pathname === '/' ? '/' : `${pathname.replace(/\/$/, '')}/`;
 const currentCanonical = canonicalUrl || new URL(normalizedPath, siteUrl).href;
-const currentImage = image || `${siteUrl}/images/optimized/ambience-dining-hall-1080w.webp`;
+const currentImage = image || `${siteUrl}/og-image.jpg`;
 
 // Comprehensive Schema.org JSON-LD Structured Data Graph
 const restaurantSchema = {
@@ -177,7 +177,7 @@ const jsonLd = {
     <meta name="geo.position" content="31.3090;75.5792" />
     <meta name="ICBM" content="31.3090, 75.5792" />
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph / Facebook / WhatsApp / LinkedIn / iMessage -->
     <meta property="og:type" content="restaurant" />
     <meta property="og:url" content={currentCanonical} />
     <meta property="og:site_name" content="Clubhouse Café" />
@@ -185,12 +185,18 @@ const jsonLd = {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={currentImage} />
+    <meta property="og:image:secure_url" content={currentImage} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Clubhouse Café — Coffee, Food & Good Company in Model Town, Jalandhar" />
 
-    <!-- Twitter Cards -->
+    <!-- Twitter / X Cards -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={currentImage} />
+    <meta name="twitter:image:alt" content="Clubhouse Café — Coffee, Food & Good Company in Model Town, Jalandhar" />
 
     <!-- Favicon & Chrome Browser Tab Icons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
