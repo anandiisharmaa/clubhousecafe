@@ -11,9 +11,9 @@ const currentYear = new Date().getFullYear();
 >
   <div class="max-w-7xl mx-auto">
     <!-- Main Footer Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 items-start pb-12 border-b border-sage/20">
-      <!-- Left Column: Brand & Tagline -->
-      <div class="md:col-span-5 space-y-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-10 lg:gap-8 items-start pb-12 border-b border-sage/20">
+      <!-- Column 1: Brand & Tagline -->
+      <div class="sm:col-span-2 lg:col-span-4 space-y-4">
         <ClubhouseLogo size="lg" />
         <p class="font-serif italic text-xl sm:text-2xl text-espresso-muted font-normal pt-2">
           {businessData.tagline}
@@ -23,25 +23,73 @@ const currentYear = new Date().getFullYear();
         </p>
       </div>
 
-      <!-- Center Column: Quick Navigation -->
-      <div class="md:col-span-4 space-y-3">
+      <!-- Column 2: Quick Navigation -->
+      <div class="sm:col-span-1 lg:col-span-2 space-y-3">
         <span class="block text-[11px] uppercase tracking-[0.25em] text-gold-dark font-semibold mb-4">
           Navigation
         </span>
         <ul class="space-y-2.5 text-xs uppercase tracking-[0.16em] font-medium text-espresso/80">
-          <li><a href="/#about" class="hover:text-espresso hover:underline underline-offset-4 transition-colors">About Clubhouse</a></li>
+          <li><a href="/#about" class="hover:text-espresso hover:underline underline-offset-4 transition-colors">About</a></li>
           <li><a href="/#menu" class="hover:text-espresso hover:underline underline-offset-4 transition-colors">Artisanal Menu</a></li>
-          <li><a href="/#experience" class="hover:text-espresso hover:underline underline-offset-4 transition-colors">The Experience</a></li>
-          <li><a href="/#gallery" class="hover:text-espresso hover:underline underline-offset-4 transition-colors">Visual Gallery</a></li>
+          <li><a href="/#experience" class="hover:text-espresso hover:underline underline-offset-4 transition-colors">Experience</a></li>
+          <li><a href="/#gallery" class="hover:text-espresso hover:underline underline-offset-4 transition-colors">Gallery</a></li>
           <li><a href="/#royalty" class="hover:text-espresso hover:underline underline-offset-4 transition-colors">Royalty Club</a></li>
           <li><a href="/#locations" class="hover:text-espresso hover:underline underline-offset-4 transition-colors">Locations</a></li>
         </ul>
       </div>
 
-      <!-- Right Column: Verified Connect Links -->
-      <div class="md:col-span-3 space-y-3">
+      <!-- Column 3: Order & Dining Out -->
+      <div class="sm:col-span-1 lg:col-span-3 space-y-3">
         <span class="block text-[11px] uppercase tracking-[0.25em] text-gold-dark font-semibold mb-4">
-          Connect
+          Order & Dining
+        </span>
+        <ul class="space-y-3 text-xs font-normal text-espresso">
+          <li>
+            <a
+              href={businessData.zomatoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group inline-flex items-center gap-2 hover:text-gold-dark transition-colors"
+              aria-label="Order from Clubhouse Café on Zomato"
+            >
+              <span class="w-1.5 h-1.5 rounded-full bg-[#E23744] group-hover:scale-125 transition-transform" aria-hidden="true"></span>
+              <span>Zomato: Model Town</span>
+              <span class="text-gold text-[10px]">↗</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href={businessData.swiggyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group inline-flex items-center gap-2 hover:text-gold-dark transition-colors"
+              aria-label="Order from Clubhouse Café on Swiggy"
+            >
+              <span class="w-1.5 h-1.5 rounded-full bg-[#FC8019] group-hover:scale-125 transition-transform" aria-hidden="true"></span>
+              <span>Swiggy: Order Online</span>
+              <span class="text-gold text-[10px]">↗</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href={businessData.districtUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group inline-flex items-center gap-2 hover:text-gold-dark transition-colors"
+              aria-label="Book or view Clubhouse Café on District"
+            >
+              <span class="w-1.5 h-1.5 rounded-full bg-[#1B2E24] border border-gold/60 group-hover:scale-125 transition-transform" aria-hidden="true"></span>
+              <span>District: Dine-in Table</span>
+              <span class="text-gold text-[10px]">↗</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Verified Connect Links -->
+      <div class="sm:col-span-2 lg:col-span-3 space-y-3">
+        <span class="block text-[11px] uppercase tracking-[0.25em] text-gold-dark font-semibold mb-4">
+          Connect & Visit
         </span>
         <ul class="space-y-3 text-xs font-normal text-espresso">
           <li>

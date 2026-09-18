@@ -16,6 +16,9 @@ export interface BusinessInfo {
   hours: string;
   rating: number;
   ratingCount: string;
+  zomatoUrl: string;
+  swiggyUrl: string;
+  districtUrl: string;
 }
 
 export const businessData: BusinessInfo = {
@@ -35,6 +38,9 @@ export const businessData: BusinessInfo = {
   instagramUrl: 'https://www.instagram.com/clubhousecafe.in/',
   instagramHandle: '@clubhousecafe.in',
   googleMapsUrl: 'https://maps.app.goo.gl/6p3MRjtao5tJF8ni7',
+  zomatoUrl: 'https://www.zomato.com/vi/jalandhar/clubhouse-cafe-model-town',
+  swiggyUrl: 'https://www.swiggy.com/city/jalandhar/clubhouse-cafe-abadpura-model-town-rest1080009',
+  districtUrl: 'https://www.district.in/dining/jalandhar/clubhouse-cafe-model-town',
   hours: '9:30 AM – 12:00 AM',
   rating: 4.3,
   ratingCount: '240+',
