@@ -212,28 +212,41 @@ const jsonLd = {
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
 
-    <!-- Google Fonts Preconnect & Optimized WOFF2 Loading -->
+    <!-- Google Fonts: Asynchronous non-blocking loading for instant FCP -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      />
+    </noscript>
 
-    <!-- Critical LCP Hero Image Preloading -->
+    <!-- Critical LCP Hero Image Preloading (AVIF for ultra-fast load, matches picture srcset) -->
     <link
       rel="preload"
       as="image"
-      href="/images/optimized/ambience-dining-hall-768w.webp"
-      type="image/webp"
+      href="/images/optimized/ambience-dining-hall-768w.avif"
+      type="image/avif"
       media="(max-width: 768px)"
       fetchpriority="high"
     />
     <link
       rel="preload"
       as="image"
-      href="/images/optimized/ambience-dining-hall-1080w.webp"
-      type="image/webp"
+      href="/images/optimized/ambience-dining-hall-1080w.avif"
+      type="image/avif"
       media="(min-width: 769px)"
       fetchpriority="high"
     />
