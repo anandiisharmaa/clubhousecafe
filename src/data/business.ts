@@ -1,5 +1,6 @@
 export interface BusinessInfo {
   name: string;
+  legalName: string;
   shortName: string;
   tagline: string;
   heroHeadline: string;
@@ -23,6 +24,7 @@ export interface BusinessInfo {
 
 export const businessData: BusinessInfo = {
   name: 'Clubhouse Café',
+  legalName: 'ASK EVENTS LLP',
   shortName: 'Clubhouse',
   tagline: 'Coffee. Food. Company.',
   heroHeadline: 'A PLACE TO',
