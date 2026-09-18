@@ -1,0 +1,105 @@
+---
+import ClubhouseLogo from './ClubhouseLogo.astro';
+import { businessData } from '@/data/business';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer
+  class="bg-ivory text-espresso py-16 md:py-20 px-6 md:px-12 lg:px-16 border-t border-sage/20 pb-[max(4rem,calc(env(safe-area-inset-bottom)+2rem))]"
+  aria-label="Clubhouse Café Footer"
+>
+  <div class="max-w-7xl mx-auto">
+    <!-- Main Footer Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 items-start pb-12 border-b border-sage/20">
+      <!-- Left Column: Brand & Tagline -->
+      <div class="md:col-span-5 space-y-4">
+        <ClubhouseLogo size="lg" />
+        <p class="font-serif italic text-xl sm:text-2xl text-espresso-muted font-normal pt-2">
+          {businessData.tagline}
+        </p>
+        <p class="text-xs text-espresso-soft max-w-sm leading-relaxed font-normal">
+          A boutique café brand dedicated to slow roasts, artisanal culinary craftsmanship, and comfortable company in Punjab.
+        </p>
+      </div>
+
+      <!-- Center Column: Quick Navigation -->
+      <div class="md:col-span-4 space-y-3">
+        <span class="block text-[11px] uppercase tracking-[0.25em] text-gold-dark font-semibold mb-4">
+          Navigation
+        </span>
+        <ul class="space-y-2.5 text-xs uppercase tracking-[0.16em] font-medium text-espresso/80">
+          <li><a href="/#about" class="hover:text-espresso hover:underline underline-offset-4 transition-colors">About Clubhouse</a></li>
+          <li><a href="/#menu" class="hover:text-espresso hover:underline underline-offset-4 transition-colors">Artisanal Menu</a></li>
+          <li><a href="/#experience" class="hover:text-espresso hover:underline underline-offset-4 transition-colors">The Experience</a></li>
+          <li><a href="/#gallery" class="hover:text-espresso hover:underline underline-offset-4 transition-colors">Visual Gallery</a></li>
+          <li><a href="/#royalty" class="hover:text-espresso hover:underline underline-offset-4 transition-colors">Royalty Club</a></li>
+          <li><a href="/#locations" class="hover:text-espresso hover:underline underline-offset-4 transition-colors">Locations</a></li>
+        </ul>
+      </div>
+
+      <!-- Right Column: Verified Connect Links -->
+      <div class="md:col-span-3 space-y-3">
+        <span class="block text-[11px] uppercase tracking-[0.25em] text-gold-dark font-semibold mb-4">
+          Connect
+        </span>
+        <ul class="space-y-3 text-xs font-normal text-espresso">
+          <li>
+            <a
+              href={businessData.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 hover:text-gold-dark transition-colors"
+            >
+              <span>Instagram: {businessData.instagramHandle}</span>
+              <span class="text-gold">↗</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href={businessData.googleMapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 hover:text-gold-dark transition-colors"
+            >
+              <span>Google Maps: Model Town</span>
+              <span class="text-gold">↗</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href={businessData.phoneHref}
+              class="inline-flex items-center gap-2 hover:text-gold-dark transition-colors"
+            >
+              <span>Call: {businessData.phoneFormatted}</span>
+            </a>
+          </li>
+          <li class="pt-2">
+            <span class="block text-[10px] uppercase tracking-wider text-espresso-soft font-semibold">Hours & Status</span>
+            <span class="text-xs text-espresso font-medium flex items-center gap-2 pt-0.5">
+              <span data-live-status-dot class="w-1.5 h-1.5 rounded-full bg-emerald-700"></span>
+              <span data-live-status-text>{businessData.hours} Daily</span>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Colophon -->
+    <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-espresso-soft font-normal">
+      <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 sm:gap-4">
+        <span>© {currentYear} {businessData.name}. All rights reserved.</span>
+        <span class="hidden sm:inline">·</span>
+        <span class="hidden sm:inline">Model Town, Jalandhar · Amritsar</span>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs">
+        <a href="/privacy-policy" class="hover:text-espresso hover:underline underline-offset-4 transition-colors">Privacy Policy</a>
+        <span>·</span>
+        <a href="/terms-and-conditions" class="hover:text-espresso hover:underline underline-offset-4 transition-colors">Terms & Conditions</a>
+        <span>·</span>
+        <a href="#top" class="hover:text-espresso transition-colors">Back to Top ↑</a>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <!-- Homepage & Core Experience -->
+  <url>
+    <loc>https://clubhousecafe.in/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://clubhousecafe.in/images/optimized/ambience-dining-hall-1080w.webp</image:loc>
+      <image:title>Clubhouse Café Dining Sanctuary</image:title>
+      <image:caption>Spacious main dining hall with sage velvet chairs and warm plaster arches in Model Town, Jalandhar</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://clubhousecafe.in/images/optimized/ambience-woven-booths-768w.webp</image:loc>
+      <image:title>Woven Privacy Booths at Clubhouse Café</image:title>
+      <image:caption>Acoustic woven partitions and ambient paper lanterns in Jalandhar</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://clubhousecafe.in/images/optimized/tres-leches-1080w.webp</image:loc>
+      <image:title>Saffron Mango Tres Leches</image:title>
+      <image:caption>Artisanal soaked sponge cake with piped chantilly cream and saffron notes</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://clubhousecafe.in/images/optimized/buratta-neapolitan-pizza-1080w.webp</image:loc>
+      <image:title>Neapolitan Burrata Pizza</image:title>
+      <image:caption>Handcrafted blistered crust pizza with San Marzano pomodoro, fresh basil, and creamy whole Italian burrata</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://clubhousecafe.in/images/optimized/belgian-croissant-1080w.webp</image:loc>
+      <image:title>Artisanal Belgian Chocolate Croissant</image:title>
+      <image:caption>Golden laminated pastry drizzled with dark Belgian ganache</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://clubhousecafe.in/images/optimized/strawberry-matcha-latte-1080w.webp</image:loc>
+      <image:title>Ceremonial Strawberry Matcha Latte</image:title>
+      <image:caption>Layered Uji ceremonial grade matcha with house strawberry compote and velvety oat milk</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://clubhousecafe.in/privacy-policy/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Terms & Conditions -->
+  <url>
+    <loc>https://clubhousecafe.in/terms-and-conditions/</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+</urlset>

@@ -1,0 +1,163 @@
+---
+import OptimizedImage from './OptimizedImage.astro';
+
+interface StoryBeat {
+  num: string;
+  eyebrow: string;
+  title: string;
+  body: string;
+  imageId: string;
+  tag: string;
+}
+
+const beats: StoryBeat[] = [
+  {
+    num: '01',
+    eyebrow: 'Culinary Devotion',
+    title: 'Good Food.',
+    body: 'Wood-fired sourdough crusts blistered to perfection, velvety Aleppo chili poached eggs, and vibrant plates crafted fresh from scratch every day.',
+    imageId: 'buratta-neapolitan-pizza',
+    tag: 'Artisan Kitchen',
+  },
+  {
+    num: '02',
+    eyebrow: 'Precision & Ritual',
+    title: 'Good Coffee.',
+    body: 'Carefully extracted roasts, silky microfoam, ceremonial Uji matcha, and refreshing iced cold brews designed for true coffee enthusiasts.',
+    imageId: 'strawberry-matcha-latte',
+    tag: 'Slow Brew Bar',
+  },
+  {
+    num: '03',
+    eyebrow: 'Shared Moments',
+    title: 'Good Company.',
+    body: 'Sunlit marble tables, cozy fluted sage corners, and conversations that linger through lazy afternoons and late-night cravings.',
+    imageId: 'avocado-toast',
+    tag: 'The Gathering Space',
+  },
+  {
+    num: '04',
+    eyebrow: 'Our Living Promise',
+    title: "That's Clubhouse.",
+    body: 'A sanctuary designed for unhurried living. Welcome to your boutique home in Jalandhar and Amritsar, Punjab.',
+    imageId: 'teddy-mousse',
+    tag: 'Flagship Living',
+  },
+];
+---
+
+<section
+  id="signature-story"
+  class="relative py-20 md:py-28 px-6 md:px-12 lg:px-16 bg-espresso text-ivory overflow-hidden content-auto"
+  aria-label="Clubhouse Signature Story"
+>
+  <!-- Ambient Warmth Orbs -->
+  <div class="pointer-events-none absolute inset-0 overflow-hidden z-0" aria-hidden="true">
+    <div class="absolute -top-32 right-10 w-[500px] h-[500px] rounded-full bg-gold/10 blur-[130px]"></div>
+    <div class="absolute -bottom-32 left-10 w-[500px] h-[500px] rounded-full bg-gold/10 blur-[130px]"></div>
+  </div>
+
+  <!-- Minimal Whisper-Soft Background Coffee Watermarks (Very low opacity, strictly in outer margins) -->
+  <div class="pointer-events-none absolute inset-0 overflow-hidden z-0 select-none" aria-hidden="true">
+    <!-- Top-Right Far Margin: Delicate Coffee Bean Outline -->
+    <div class="absolute right-[4%] top-[6%] rotate-25 opacity-[0.08] text-gold-light">
+      <svg class="w-16 h-16 sm:w-20 sm:h-20" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+        <path d="M7 16C7 9.9 11 5 16 5C21 5 25 9.9 25 16C25 22.1 21 27 16 27C11 27 7 22.1 7 16Z" />
+        <path d="M16 6C13.5 10 18.5 22 16 26" />
+      </svg>
+    </div>
+
+    <!-- Mid-Left Far Margin: Minimal Steaming Cup Silhouette -->
+    <div class="hidden lg:block absolute left-[2%] top-[45%] -rotate-12 opacity-[0.07] text-gold-light">
+      <svg class="w-14 h-14" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 6Q12 8 14 10" />
+        <path d="M19 5Q17 7 19 9" />
+        <path d="M8 12H26V18C26 22 23 25 17 25C11 25 8 22 8 18V12Z" />
+        <path d="M26 14H28C30 14 31 15 31 17C31 19 30 20 28 20H26" />
+        <path d="M6 27C11 29 23 29 28 27" />
+      </svg>
+    </div>
+
+    <!-- Bottom-Right Far Margin: Minimal Bean Pair -->
+    <div class="absolute right-[3%] bottom-[8%] -rotate-20 opacity-[0.07] text-gold-light">
+      <svg class="w-16 h-16" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+        <g transform="rotate(-15 14 18)">
+          <path d="M9 18C9 13 11.5 9 14 9C16.5 9 19 13 19 18C19 23 16.5 27 14 27C11.5 27 9 23 9 18Z" />
+          <path d="M14 10C12.5 13.5 15.5 22.5 14 26" />
+        </g>
+        <g transform="rotate(35 26 22)">
+          <path d="M21 22C21 17.5 23.5 14 26 14C28.5 14 31 17.5 31 22C31 26.5 28.5 30 26 30C23.5 30 21 26.5 21 22Z" />
+          <path d="M26 15C24.8 18 27.2 26 26 29" />
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto relative z-10">
+    <!-- Header -->
+    <div class="text-center max-w-2xl mx-auto mb-16 md:mb-20">
+      <span class="text-[10px] uppercase tracking-[0.35em] text-gold-light font-semibold block mb-2">
+        The Clubhouse Philosophy
+      </span>
+      <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-ivory font-bold sm:font-semibold leading-tight">
+        A Symphony of Atmosphere & Taste
+      </h2>
+      <div class="w-12 h-[1px] bg-gold/40 mx-auto mt-4"></div>
+    </div>
+
+    <!-- 4 Tightly Choreographed Panels (Clean, Uncluttered, Pure Typography) -->
+    <div class="space-y-16 md:space-y-24">
+      {beats.map((beat, idx) => (
+        <div
+          class={`story-panel grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center ${
+            idx % 2 === 1 ? 'lg:flex-row-reverse' : ''
+          }`}
+        >
+          <!-- Clean Typography Column -->
+          <div class={`lg:col-span-6 ${idx % 2 === 1 ? 'lg:order-2 lg:pl-6' : 'lg:pr-6'}`}>
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-xs uppercase tracking-[0.25em] text-gold-light font-semibold">
+                {beat.num} / 04
+              </span>
+              <span class="w-6 h-[1px] bg-gold/40"></span>
+              <span class="text-[11px] uppercase tracking-[0.2em] text-ivory/60">
+                {beat.eyebrow}
+              </span>
+            </div>
+
+            <h3 class="story-panel-title font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-ivory font-bold sm:font-semibold tracking-tight leading-[1.05] mb-4">
+              {beat.title}
+            </h3>
+
+            <p class="font-sans text-sm sm:text-base text-ivory/75 leading-relaxed max-w-lg mb-6 font-normal">
+              {beat.body}
+            </p>
+
+            <div class="inline-flex items-center gap-3 text-xs tracking-widest uppercase text-gold-light border-b border-gold/30 pb-1">
+              <span>{beat.tag}</span>
+            </div>
+          </div>
+
+          <!-- Image Column -->
+          <div class={`lg:col-span-6 ${idx % 2 === 1 ? 'lg:order-1' : ''}`}>
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-white/10 aspect-[16/10] bg-espresso-light">
+              <OptimizedImage
+                id={beat.imageId}
+                class="w-full h-full"
+                imgClass="story-panel-img w-full h-full object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                dataCursor="view"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-espresso/60 via-transparent to-transparent pointer-events-none"></div>
+
+              <div class="absolute bottom-4 left-5 right-5 flex items-center justify-between text-ivory/80 text-xs">
+                <span class="font-serif italic text-gold-light">{beat.title}</span>
+                <span class="uppercase tracking-widest text-[10px]">Clubhouse Café</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

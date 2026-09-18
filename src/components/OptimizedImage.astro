@@ -1,0 +1,66 @@
+---
+import imageData from '@/data/images.json';
+
+interface Props {
+  id: string;
+  class?: string;
+  imgClass?: string;
+  priority?: boolean;
+  sizes?: string;
+  dataCursor?: string;
+  aspectRatio?: string;
+}
+
+const {
+  id,
+  class: containerClass = '',
+  imgClass = '',
+  priority = false,
+  sizes,
+  dataCursor,
+  aspectRatio,
+} = Astro.props;
+
+const img = (imageData as Record<string, any>)[id];
+
+if (!img) {
+  console.warn(`OptimizedImage: image with id "${id}" not found in images.json`);
+}
+---
+
+{img ? (
+  <picture
+    class={`block overflow-hidden ${containerClass}`}
+    data-cursor={dataCursor}
+  >
+    {img.avifSrcset && (
+      <source
+        type="image/avif"
+        srcset={img.avifSrcset}
+        sizes={sizes || img.sizes}
+      />
+    )}
+    {img.webpSrcset && (
+      <source
+        type="image/webp"
+        srcset={img.webpSrcset}
+        sizes={sizes || img.sizes}
+      />
+    )}
+    <img
+      src={img.defaultSrc}
+      alt={img.alt}
+      width={img.width}
+      height={img.height}
+      loading={priority ? 'eager' : 'lazy'}
+      decoding="async"
+      fetchpriority={priority ? 'high' : undefined}
+      class={`w-full h-full object-cover transition-transform duration-700 ease-out ${imgClass}`}
+      style={aspectRatio === 'none' || aspectRatio === 'unset' ? undefined : aspectRatio ? `aspect-ratio: ${aspectRatio};` : `aspect-ratio: ${img.width} / ${img.height};`}
+    />
+  </picture>
+) : (
+  <div class={`bg-cream/40 flex items-center justify-center text-espresso-soft text-xs ${containerClass}`}>
+    Asset {id}
+  </div>
+)}

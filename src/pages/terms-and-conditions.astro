@@ -1,0 +1,188 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { businessData } from '@/data/business';
+
+const pageTitle = `Terms & Conditions | ${businessData.name}`;
+const pageDescription = `Terms and Conditions for Clubhouse Café in Jalandhar and Amritsar, Punjab. Guidelines for reservations, café etiquette, and dining services.`;
+const lastUpdated = 'September 17, 2026';
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} isLegalPage={true} pageName="Terms & Conditions">
+  <div class="pt-32 md:pt-40 pb-20 md:pb-28 bg-ivory text-espresso min-h-screen">
+    <!-- Hero Header -->
+    <header class="max-w-4xl mx-auto px-6 md:px-12 mb-12 md:mb-16">
+      <a
+        href="/"
+        class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-semibold text-gold-dark hover:text-espresso transition-colors mb-6 group"
+      >
+        <span class="transition-transform group-hover:-translate-x-1">←</span>
+        <span>Back to Clubhouse</span>
+      </a>
+
+      <div class="flex items-center gap-3 mb-3">
+        <span class="w-8 h-[1px] bg-gold"></span>
+        <span class="text-[11px] uppercase tracking-[0.3em] font-semibold text-gold-dark">
+          Hospitality Standards & Guidelines
+        </span>
+      </div>
+
+      <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl text-espresso font-bold sm:font-semibold tracking-tight leading-tight mb-4">
+        Terms & <span class="italic text-gold-dark font-bold sm:font-semibold">Conditions.</span>
+      </h1>
+
+      <p class="text-sm md:text-base text-espresso-muted max-w-2xl font-normal leading-relaxed">
+        Welcome to Clubhouse Café. By visiting our physical café sanctuaries in Model Town, Jalandhar, or upcoming in Amritsar, or by utilizing our online reservation and digital concierge services, you agree to the following terms designed to ensure a harmonious dining atmosphere for all guests.
+      </p>
+
+      <div class="mt-6 pt-4 border-t border-sage/20 flex items-center gap-4 text-xs text-espresso-soft">
+        <span>Effective Date: {lastUpdated}</span>
+        <span>·</span>
+        <span>Version 2.4</span>
+      </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main class="max-w-4xl mx-auto px-6 md:px-12 space-y-12">
+      <!-- Section 1: Agreement to Terms -->
+      <section class="rounded-3xl bg-ivory-muted/40 border border-sage/20 p-8 md:p-10">
+        <h2 class="font-serif text-2xl md:text-3xl text-espresso font-normal mb-4">
+          1. Agreement to Terms
+        </h2>
+        <p class="text-xs sm:text-sm text-espresso-muted leading-relaxed font-normal mb-4">
+          These Terms and Conditions ("Terms") govern your relationship with Clubhouse Café ("Clubhouse", "we", "us"), operated at The Elite City Center, Model Town Road, Jalandhar, Punjab 144001, India, and through the website clubhousecafe.in.
+        </p>
+        <p class="text-xs sm:text-sm text-espresso-muted leading-relaxed font-normal">
+          By reserving a table, placing culinary orders, or joining our guest programs, you acknowledge that you have read, understood, and agreed to adhere to these provisions.
+        </p>
+      </section>
+
+      <!-- Section 2: Table Reservations & Seating Policy -->
+      <section class="space-y-4">
+        <h2 class="font-serif text-2xl md:text-3xl text-espresso font-normal">
+          2. Table Reservations & Seating Policy
+        </h2>
+        <p class="text-xs sm:text-sm text-espresso-muted leading-relaxed font-normal">
+          To maintain the leisurely rhythm of the café while respecting all patrons, the following reservation protocols apply:
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+          <div class="p-6 rounded-2xl bg-ivory border border-sage/20 shadow-xs">
+            <h3 class="font-serif text-lg text-espresso font-medium mb-2">15-Minute Grace Period</h3>
+            <p class="text-xs text-espresso-muted leading-relaxed font-normal">
+              Reserved tables are held for up to 15 minutes past the confirmed booking time. If your party anticipates a delay, please notify our front desk via phone or WhatsApp.
+            </p>
+          </div>
+          <div class="p-6 rounded-2xl bg-ivory border border-sage/20 shadow-xs">
+            <h3 class="font-serif text-lg text-espresso font-medium mb-2">Walk-in Sanctuary</h3>
+            <p class="text-xs text-espresso-muted leading-relaxed font-normal">
+              We reserve an allocated portion of dining space across all operating hours (09:30 AM to 12:00 AM) specifically for spontaneous walk-in coffee lovers and diners.
+            </p>
+          </div>
+          <div class="p-6 rounded-2xl bg-ivory border border-sage/20 shadow-xs">
+            <h3 class="font-serif text-lg text-espresso font-medium mb-2">Large Gatherings</h3>
+            <p class="text-xs text-espresso-muted leading-relaxed font-normal">
+              Parties of 8 or more guests require advance booking of at least 24 hours to ensure kitchen readiness and optimal communal seating configurations.
+            </p>
+          </div>
+          <div class="p-6 rounded-2xl bg-ivory border border-sage/20 shadow-xs">
+            <h3 class="font-serif text-lg text-espresso font-medium mb-2">Seating Preference</h3>
+            <p class="text-xs text-espresso-muted leading-relaxed font-normal">
+              While we endeavor to fulfill specific table requests (such as fluted velvet booths or sunlit window marble counters), seating allocation is subject to live dining room flow.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Culinary Menus, Dietary & Allergen Care -->
+      <section class="space-y-4">
+        <h2 class="font-serif text-2xl md:text-3xl text-espresso font-normal">
+          3. Culinary Offerings, Dietary & Allergen Notice
+        </h2>
+        <p class="text-xs sm:text-sm text-espresso-muted leading-relaxed font-normal">
+          Every plate and cup at Clubhouse is prepared to order using authentic European butter, fermented sourdough pizza bases, and specialty single-origin coffees:
+        </p>
+        <ul class="space-y-3 pt-2 text-xs sm:text-sm text-espresso-muted leading-relaxed">
+          <li class="flex items-start gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-gold-dark mt-2 shrink-0"></span>
+            <span><strong class="text-espresso font-medium">Allergen Communication:</strong> Our kitchen works with dairy (fresh burrata, mascarpone, artisanal butter), gluten (sourdough, brioche, croissants), tree nuts (pistachios, hazelnuts, almonds), and eggs. While we take rigorous care with cross-contact, please inform your server of severe allergies before ordering.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-gold-dark mt-2 shrink-0"></span>
+            <span><strong class="text-espresso font-medium">Seasonal Availability:</strong> Artisanal ingredients and limited-batch bakes (e.g. Belgian chocolate croissants, sculpted teddy mousses) are baked fresh daily and subject to availability.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-gold-dark mt-2 shrink-0"></span>
+            <span><strong class="text-espresso font-medium">Customization:</strong> We gladly accommodate plant-based milks (oat, almond) and temperature preferences for espresso and matcha beverages upon request.</span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Section 4: Café Atmosphere & Photography Policy -->
+      <section class="space-y-4">
+        <h2 class="font-serif text-2xl md:text-3xl text-espresso font-normal">
+          4. Café Sanctuary, Etiquette & Photography
+        </h2>
+        <p class="text-xs sm:text-sm text-espresso-muted leading-relaxed font-normal">
+          Clubhouse is designed as a peaceful haven for conversations, reading, and savoring the present moment:
+        </p>
+        <div class="p-6 rounded-2xl bg-sage-pale/30 border border-sage/25 space-y-3 text-xs sm:text-sm text-espresso-muted leading-relaxed">
+          <p><strong class="text-espresso font-medium">Personal Photography:</strong> Guests are welcome to capture photos and short videos of their dining experience, dishes, and company for personal memories and social sharing (@clubhousecafe.in).</p>
+          <p><strong class="text-espresso font-medium">Guest Privacy:</strong> We kindly ask that photography respectfully excludes other café patrons and staff without their clear consent.</p>
+          <p><strong class="text-espresso font-medium">Commercial & Professional Shoots:</strong> Commercial photography, fashion campaigns, professional lighting rigs, and brand videography require prior written clearance from Clubhouse management to avoid disrupting guest tranquility.</p>
+        </div>
+      </section>
+
+      <!-- Section 5: The Royalty Club & Promotional Terms -->
+      <section class="space-y-4">
+        <h2 class="font-serif text-2xl md:text-3xl text-espresso font-normal">
+          5. The Royalty Club Privileges
+        </h2>
+        <p class="text-xs sm:text-sm text-espresso-muted leading-relaxed font-normal">
+          The Clubhouse Royalty Club is a complimentary tier program celebrating our regular patrons. Privileges, including complimentary pastry tastings, priority table access, and private culinary previews, are non-transferable, carry no cash surrender value, and remain subject to program rules established by Clubhouse management.
+        </p>
+      </section>
+
+      <!-- Section 6: Intellectual Property -->
+      <section class="space-y-4">
+        <h2 class="font-serif text-2xl md:text-3xl text-espresso font-normal">
+          6. Intellectual Property & Brand Rights
+        </h2>
+        <p class="text-xs sm:text-sm text-espresso-muted leading-relaxed font-normal">
+          The Clubhouse Café logotype, bespoke crest, graphic layouts, culinary photography, website architecture, and written brand materials are the exclusive intellectual property of Clubhouse Café. No reproduction, scraping, redistribution, or commercial use is permitted without prior written consent.
+        </p>
+      </section>
+
+      <!-- Section 7: Governing Law & Jurisdiction -->
+      <section class="space-y-4">
+        <h2 class="font-serif text-2xl md:text-3xl text-espresso font-normal">
+          7. Governing Law & Dispute Resolution
+        </h2>
+        <p class="text-xs sm:text-sm text-espresso-muted leading-relaxed font-normal">
+          These Terms and any non-contractual obligations arising out of your visit or use of our digital platforms are governed by and construed in accordance with the laws of the Republic of India. Any legal proceedings shall fall under the exclusive jurisdiction of the competent courts in Jalandhar, Punjab.
+        </p>
+      </section>
+
+      <!-- Section 8: Inquiries & Concierge -->
+      <section class="pt-6 border-t border-sage/20">
+        <div class="rounded-3xl bg-espresso text-ivory p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div>
+            <span class="text-[10px] uppercase tracking-[0.25em] text-gold font-semibold block mb-1">
+              Guest Services & Management
+            </span>
+            <h3 class="font-serif text-2xl text-ivory font-normal mb-2">
+              Questions Regarding Our Policies?
+            </h3>
+            <p class="text-xs text-ivory/70 max-w-md font-normal leading-relaxed">
+              Our hospitality team is at your service for any questions regarding bookings, large gatherings, or dietary needs.
+            </p>
+          </div>
+          <div class="space-y-2 shrink-0 text-xs">
+            <p class="text-ivory font-medium">Clubhouse Café</p>
+            <p class="text-ivory/70">Model Town Road, Jalandhar, Punjab 144001</p>
+            <p class="text-gold-light">Direct Line: {businessData.phoneFormatted}</p>
+            <p class="text-gold-light">Concierge: hello@clubhousecafe.in</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</BaseLayout>

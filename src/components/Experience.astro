@@ -1,0 +1,322 @@
+---
+import OptimizedImage from './OptimizedImage.astro';
+
+interface ExperienceMoment {
+  id: string;
+  step: string;
+  timeframe: string;
+  title: string;
+  description: string;
+  imageId: string;
+  accent: string;
+}
+
+const moments: ExperienceMoment[] = [
+  {
+    id: 'morning-coffee',
+    step: '01',
+    timeframe: '09:30 AM — 12:00 PM',
+    title: 'Morning Coffee',
+    description:
+      'Tranquil daylight cascading across Carrera marble, the comforting steam of fresh roasts, and warm flaky Belgian chocolate croissants to begin the day slowly.',
+    imageId: 'belgian-croissant',
+    accent: 'Viennoiserie & Espresso',
+  },
+  {
+    id: 'lazy-lunches',
+    step: '02',
+    timeframe: '12:00 PM — 04:00 PM',
+    title: 'Lazy Lunches',
+    description:
+      'Midday gatherings that linger. Wood-fired Neapolitan burrata pizzas with blistered crusts, wholesome grain bowls, and garlic Aleppo poached eggs.',
+    imageId: 'buratta-neapolitan-pizza',
+    accent: 'Neapolitan Sourdough & Brunch',
+  },
+  {
+    id: 'golden-hour',
+    step: '03',
+    timeframe: '04:00 PM — 08:00 PM',
+    title: 'Golden Hour',
+    description:
+      'Warm ambient honey light bathing fluted sage seating. Handcrafted tri-color iced strawberry matcha lattes paired with delicate truffled dimsums.',
+    imageId: 'strawberry-matcha-latte',
+    accent: 'Artisanal Teas & Small Plates',
+  },
+  {
+    id: 'late-night',
+    step: '04',
+    timeframe: '08:00 PM — 12:00 AM',
+    title: 'Late-Night Conversations',
+    description:
+      'Laughter that stretches into the midnight hour. Sizzling cast-iron hazelnut fudge brownies, sculpted chocolate teddy mousses, and good company.',
+    imageId: 'skillet-brownie',
+    accent: 'Skillet Bakes & Midnight Stories',
+  },
+];
+---
+
+<section
+  id="experience"
+  class="relative bg-sage-pastel border-t border-b border-sage/25 py-20 md:py-28 overflow-hidden"
+  aria-label="The Clubhouse Experience"
+>
+  <!-- 1. Ambient Dappled Sunlight Orbs (Bokeh Motion Graphics) -->
+  <div class="pointer-events-none absolute inset-0 overflow-hidden z-0" aria-hidden="true">
+    <!-- Honey-gold warm morning light orb -->
+    <div
+      class="absolute -top-28 -left-28 w-[380px] sm:w-[520px] lg:w-[650px] h-[380px] sm:h-[520px] lg:h-[650px] rounded-full bg-gold/25 blur-[90px] lg:blur-[130px] will-change-transform animate-ambient-drift"
+    ></div>
+    <!-- Sunlit cream bokeh orb -->
+    <div
+      class="absolute -bottom-28 -right-28 w-[340px] sm:w-[480px] lg:w-[580px] h-[340px] sm:h-[480px] lg:h-[580px] rounded-full bg-gold-light/30 blur-[85px] lg:blur-[120px] will-change-transform animate-ambient-drift-rev"
+    ></div>
+    <!-- Soft sage luminescence pulse -->
+    <div
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[450px] h-[320px] sm:h-[450px] rounded-full bg-sage-light/35 blur-[75px] lg:blur-[100px] will-change-transform animate-ambient-pulse"
+    ></div>
+  </div>
+
+  <!-- 2. Tactile Archival Grain / Matte Linen Texture Overlay -->
+  <div
+    class="pointer-events-none absolute inset-0 z-0 opacity-[0.04] mix-blend-overlay archival-grain"
+    aria-hidden="true"
+  ></div>
+
+  <!-- 3. Interactive Specular Mouse Spotlight (Smooth 60fps tracking) -->
+  <div
+    id="experience-spotlight"
+    class="pointer-events-none absolute inset-0 z-0 transition-opacity duration-700 opacity-60 md:opacity-100"
+    style="background: radial-gradient(550px circle at var(--mouse-x, 50%) var(--mouse-y, 40%), rgba(255, 252, 245, 0.45), rgba(200, 168, 118, 0.12) 40%, transparent 75%);"
+    aria-hidden="true"
+  ></div>
+
+  <!-- 4. Subtle Minimal Coffee Watermark Accents (Whisper-soft opacity) -->
+  <div class="pointer-events-none absolute inset-0 overflow-hidden z-0 select-none" aria-hidden="true">
+    <!-- Top-Right Corner Minimal Bean -->
+    <div class="absolute right-[4%] top-[6%] rotate-20 opacity-[0.08] text-espresso">
+      <svg class="w-12 h-12" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+        <path d="M7 16C7 9.9 11 5 16 5C21 5 25 9.9 25 16C25 22.1 21 27 16 27C11 27 7 22.1 7 16Z" />
+        <path d="M16 6C13.5 10 18.5 22 16 26" />
+      </svg>
+    </div>
+
+    <!-- Bottom-Left Corner Minimal Steaming Cup -->
+    <div class="absolute left-[3%] bottom-[5%] -rotate-10 opacity-[0.08] text-espresso">
+      <svg class="w-12 h-12" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 6Q12 8 14 10" />
+        <path d="M19 5Q17 7 19 9" />
+        <path d="M8 12H26V18C26 22 23 25 17 25C11 25 8 22 8 18V12Z" />
+        <path d="M26 14H28C30 14 31 15 31 17C31 19 30 20 28 20H26" />
+        <path d="M6 27C11 29 23 29 28 27" />
+      </svg>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 relative z-10">
+    <!-- Header with Section Title & Controls -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+      <div>
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-8 h-[1px] bg-gold"></span>
+          <span class="text-[11px] uppercase tracking-[0.3em] font-semibold text-gold-dark">
+            A Day In Good Company
+          </span>
+        </div>
+        <h2 class="font-serif text-4xl sm:text-5xl md:text-6xl text-espresso font-bold sm:font-semibold tracking-tight leading-tight">
+          The Clubhouse <br class="hidden sm:block" />
+          <span class="font-serif italic text-gold-dark font-bold sm:font-semibold">Experience.</span>
+        </h2>
+      </div>
+
+      <!-- Controls & Subtitle -->
+      <div class="flex flex-col sm:flex-row sm:items-center gap-6">
+        <p class="text-xs sm:text-sm text-espresso-muted max-w-xs font-normal leading-relaxed">
+          From serene morning espresso to late-night laughter, every hour has its own rhythm at Clubhouse.
+        </p>
+        <!-- Arrow Navigation Buttons -->
+        <div class="flex items-center gap-3 self-start sm:self-auto">
+          <button
+            id="exp-prev-btn"
+            type="button"
+            class="w-12 h-12 rounded-full border border-sage/30 bg-ivory text-espresso flex items-center justify-center hover:bg-espresso hover:text-ivory hover:border-espresso transition-all duration-200 shadow-xs"
+            aria-label="Previous experience moment"
+          >
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button
+            id="exp-next-btn"
+            type="button"
+            class="w-12 h-12 rounded-full border border-sage/30 bg-ivory text-espresso flex items-center justify-center hover:bg-espresso hover:text-ivory hover:border-espresso transition-all duration-200 shadow-xs"
+            aria-label="Next experience moment"
+          >
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Track Container -->
+    <div
+      id="experience-carousel"
+      class="flex gap-5 md:gap-8 overflow-x-auto scrollbar-none snap-x snap-mandatory py-4 -mx-6 px-6 md:-mx-12 md:px-12 lg:-mx-16 lg:px-16 scroll-smooth"
+    >
+      {moments.map((moment) => (
+        <article
+          class="experience-card snap-start w-[84vw] sm:w-[420px] lg:w-[480px] rounded-3xl bg-ivory border border-sage/20 shadow-lg overflow-hidden flex-shrink-0 flex flex-col group transition-all duration-300 hover:shadow-2xl hover:border-sage/40"
+        >
+          <!-- Image Showcase -->
+          <div class="relative aspect-[16/10] overflow-hidden bg-ivory-muted">
+            <OptimizedImage
+              id={moment.imageId}
+              class="w-full h-full"
+              imgClass="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              sizes="(max-width: 768px) 85vw, 480px"
+              dataCursor="view"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-espresso/45 via-transparent to-transparent pointer-events-none"></div>
+
+            <div class="absolute bottom-4 left-5 right-5 flex items-center justify-between text-ivory">
+              <span class="text-[11px] tracking-widest uppercase font-medium text-gold-light">
+                {moment.accent}
+              </span>
+              <span class="font-serif text-sm italic">{moment.step} / 04</span>
+            </div>
+          </div>
+
+          <!-- Card Content -->
+          <div class="p-6 sm:p-7 md:p-8 flex flex-col justify-between flex-grow">
+            <div>
+              <span class="text-[10px] uppercase tracking-[0.25em] text-gold-dark font-semibold block mb-1">
+                Chapter {moment.step}
+              </span>
+              <h3 class="font-serif text-2xl md:text-3xl text-espresso font-bold sm:font-semibold mb-2.5 group-hover:text-gold-dark transition-colors">
+                {moment.title}
+              </h3>
+              <p class="text-xs sm:text-sm text-espresso-muted leading-relaxed font-normal">
+                {moment.description}
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-sage/15 flex items-center justify-between text-xs text-espresso-soft">
+              <span>Clubhouse Atmosphere</span>
+              <button
+                type="button"
+                data-open-reservation
+                class="font-serif italic text-gold-dark hover:underline py-1"
+              >
+                Reserve a Table →
+              </button>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Progress Indicator Pills (Tap to navigate) -->
+    <div class="flex items-center justify-center gap-2 mt-6 sm:mt-8" role="tablist" aria-label="Experience moments pagination">
+      {moments.map((moment, i) => (
+        <button
+          type="button"
+          class="exp-dot-btn py-2 px-1 focus:outline-none min-h-[36px] flex items-center justify-center"
+          data-index={i}
+          aria-label={`Jump to moment ${moment.step}: ${moment.title}`}
+        >
+          <span
+            class={`exp-dot-bar block h-1.5 rounded-full transition-all duration-300 ${i === 0 ? 'w-8 bg-espresso' : 'w-2.5 bg-sage/30'}`}
+          ></span>
+        </button>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  function setupExperienceSlider() {
+    const carousel = document.getElementById('experience-carousel');
+    const prevBtn = document.getElementById('exp-prev-btn');
+    const nextBtn = document.getElementById('exp-next-btn');
+    const dotBtns = document.querySelectorAll('.exp-dot-btn');
+    const dotBars = document.querySelectorAll('.exp-dot-bar');
+
+    if (!carousel) return;
+
+    function updateDots() {
+      const scrollLeft = carousel?.scrollLeft || 0;
+      const firstCard = carousel?.firstElementChild as HTMLElement | null;
+      const cardWidth = firstCard?.clientWidth || 340;
+      const gap = 20;
+      const activeIdx = Math.max(0, Math.min(dotBars.length - 1, Math.round(scrollLeft / (cardWidth + gap))));
+
+      dotBars.forEach((bar, idx) => {
+        if (idx === activeIdx) {
+          bar.classList.remove('w-2.5', 'bg-sage/30');
+          bar.classList.add('w-8', 'bg-espresso');
+        } else {
+          bar.classList.remove('w-8', 'bg-espresso');
+          bar.classList.add('w-2.5', 'bg-sage/30');
+        }
+      });
+    }
+
+    prevBtn?.addEventListener('click', () => {
+      const cardWidth = carousel.firstElementChild?.clientWidth || 340;
+      carousel.scrollBy({ left: -(cardWidth + 20), behavior: 'smooth' });
+    });
+
+    nextBtn?.addEventListener('click', () => {
+      const cardWidth = carousel.firstElementChild?.clientWidth || 340;
+      carousel.scrollBy({ left: cardWidth + 20, behavior: 'smooth' });
+    });
+
+    dotBtns.forEach((btn, idx) => {
+      btn.addEventListener('click', () => {
+        const firstCard = carousel.firstElementChild as HTMLElement | null;
+        const cardWidth = firstCard?.clientWidth || 340;
+        const gap = 20;
+        carousel.scrollTo({ left: idx * (cardWidth + gap), behavior: 'smooth' });
+      });
+    });
+
+    carousel.addEventListener('scroll', updateDots, { passive: true });
+  }
+
+  function setupExperienceSpotlight() {
+    const expSection = document.getElementById('experience');
+    const expSpotlight = document.getElementById('experience-spotlight');
+    if (!expSection || !expSpotlight) return;
+
+    let ticking = false;
+    expSection.addEventListener('pointermove', (e) => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const rect = expSection.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          expSpotlight.style.setProperty('--mouse-x', `${x}px`);
+          expSpotlight.style.setProperty('--mouse-y', `${y}px`);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    expSection.addEventListener('pointerleave', () => {
+      expSpotlight.style.setProperty('--mouse-x', '50%');
+      expSpotlight.style.setProperty('--mouse-y', '40%');
+    });
+  }
+
+  function initExperience() {
+    setupExperienceSlider();
+    setupExperienceSpotlight();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initExperience);
+  } else {
+    initExperience();
+  }
+</script>

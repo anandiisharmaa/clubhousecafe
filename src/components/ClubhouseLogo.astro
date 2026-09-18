@@ -1,0 +1,64 @@
+---
+interface Props {
+  variant?: 'dark' | 'white' | 'adaptive';
+  size?: 'sm' | 'md' | 'lg' | 'hero';
+  class?: string;
+}
+
+const {
+  variant = 'dark',
+  size = 'md',
+  class: className = '',
+} = Astro.props;
+
+const sizeClasses = {
+  sm: 'h-8 sm:h-9 w-auto',
+  md: 'h-10 sm:h-12 w-auto',
+  lg: 'h-14 sm:h-16 w-auto',
+  hero: 'h-16 sm:h-20 md:h-24 w-auto',
+};
+
+const currentSize = sizeClasses[size];
+---
+
+<a
+  href="/"
+  class={`group inline-flex items-center transition-opacity hover:opacity-90 ${className}`}
+  aria-label="Clubhouse Café Homepage"
+>
+  {variant === 'white' ? (
+    <picture>
+      <source srcset="/images/logo-white-400w.webp 1x, /images/logo-white-800w.webp 2x" type="image/webp" />
+      <img
+        src="/images/logo-white-400w.png"
+        alt="Clubhouse Café Logo"
+        width="400"
+        height="133"
+        class={`${currentSize} object-contain transition-transform duration-300 group-hover:scale-[1.02]`}
+      />
+    </picture>
+  ) : variant === 'dark' ? (
+    <picture>
+      <source srcset="/images/logo-dark-400w.webp 1x, /images/logo-dark-800w.webp 2x" type="image/webp" />
+      <img
+        src="/images/logo-dark-400w.png"
+        alt="Clubhouse Café Logo"
+        width="400"
+        height="133"
+        class={`${currentSize} object-contain transition-transform duration-300 group-hover:scale-[1.02]`}
+      />
+    </picture>
+  ) : (
+    <!-- Adaptive: shows dark by default, can switch via parent classes -->
+    <picture class="inline-block">
+      <source srcset="/images/logo-dark-400w.webp 1x, /images/logo-dark-800w.webp 2x" type="image/webp" />
+      <img
+        src="/images/logo-dark-400w.png"
+        alt="Clubhouse Café Logo"
+        width="400"
+        height="133"
+        class={`${currentSize} object-contain transition-transform duration-300 group-hover:scale-[1.02]`}
+      />
+    </picture>
+  )}
+</a>

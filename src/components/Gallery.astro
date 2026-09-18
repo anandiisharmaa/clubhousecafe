@@ -1,0 +1,100 @@
+---
+import OptimizedImage from './OptimizedImage.astro';
+
+interface AmbienceItem {
+  id: string;
+}
+
+const heroItem: AmbienceItem = {
+  id: 'ambience-dining-hall',
+};
+
+const featureItem: AmbienceItem = {
+  id: 'ambience-woven-booths',
+};
+
+const secondaryItems: AmbienceItem[] = [
+  {
+    id: 'ambience-sculptural-nook',
+  },
+  {
+    id: 'ambience-table-gathering',
+  },
+  {
+    id: 'ambience-curved-banquette',
+  },
+];
+---
+
+<section
+  id="gallery"
+  class="relative py-20 md:py-28 px-6 md:px-12 lg:px-16 bg-ivory overflow-hidden content-auto"
+  aria-label="Clubhouse Ambience & Architecture Gallery"
+>
+  <div class="max-w-7xl mx-auto">
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-16">
+      <div>
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-8 h-[1px] bg-gold"></span>
+          <span class="text-[11px] uppercase tracking-[0.3em] font-semibold text-gold-dark">
+            Atmosphere & Sanctuary
+          </span>
+        </div>
+        <h2 class="font-serif text-4xl sm:text-5xl md:text-6xl text-espresso font-bold sm:font-semibold tracking-tight">
+          The Architectural <br />
+          <span class="font-serif italic text-gold-dark font-bold sm:font-semibold">Ambience.</span>
+        </h2>
+      </div>
+      <p class="text-xs sm:text-sm text-espresso-muted max-w-md font-normal leading-relaxed">
+        Woven acoustic partitions, sculpted sage seating, sunlit Carrara marble, and warm plaster arches crafted for unhurried comfort in Model Town, Jalandhar.
+      </p>
+    </div>
+
+    <!-- Architectural Magazine Collage (Gapless, Edge-to-Edge Imagery) -->
+    <div class="space-y-5 md:space-y-6">
+      <!-- Top Row: Hero Landscape Sanctuary (7 cols) + Woven Privacy Booths (5 cols) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 md:gap-6 items-stretch">
+        <!-- Hero: The Main Dining Sanctuary -->
+        <div class="lg:col-span-7 group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 h-[280px] sm:h-[380px] lg:h-[460px] bg-ivory-muted">
+          <OptimizedImage
+            id={heroItem.id}
+            aspectRatio="none"
+            class="w-full h-full"
+            imgClass="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+            sizes="(max-width: 1024px) 100vw, 60vw"
+            dataCursor="view"
+          />
+        </div>
+
+        <!-- Secondary Hero: Woven Privacy Booths -->
+        <div class="lg:col-span-5 group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 h-[280px] sm:h-[380px] lg:h-[460px] bg-ivory-muted">
+          <OptimizedImage
+            id={featureItem.id}
+            aspectRatio="none"
+            class="w-full h-full"
+            imgClass="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+            sizes="(max-width: 1024px) 100vw, 40vw"
+            dataCursor="view"
+          />
+        </div>
+      </div>
+
+      <!-- Bottom Row: 3 Distinct Architectural Vignettes with Equal Height -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 items-stretch">
+        {secondaryItems.map((item, i) => (
+          <div class={`group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 h-[260px] sm:h-[320px] lg:h-[380px] bg-ivory-muted ${i === 2 ? 'sm:col-span-2 lg:col-span-1' : ''}`}>
+            <OptimizedImage
+              id={item.id}
+              aspectRatio="none"
+              class="w-full h-full"
+              imgClass="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+              sizes="(max-width: 768px) 100vw, 33vw"
+              dataCursor="view"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,182 @@
+---
+// DishDetailModal.astro - Editorial Quick Peek Lightbox
+import ClubhouseLogo from './ClubhouseLogo.astro';
+import { businessData } from '@/data/business';
+---
+
+<dialog
+  id="dish-detail-dialog"
+  class="fixed inset-0 z-[110] m-auto max-w-2xl w-[92vw] md:w-full p-0 bg-transparent backdrop:bg-espresso/75 backdrop:backdrop-blur-md open:animate-fade-in"
+  aria-labelledby="dish-modal-title"
+  aria-modal="true"
+>
+  <div class="relative bg-ivory rounded-3xl overflow-hidden shadow-2xl border border-sage/20 text-espresso flex flex-col md:flex-row max-h-[88dvh] overflow-y-auto overscroll-contain">
+    <!-- Close Button -->
+    <button
+      id="close-dish-modal-btn"
+      type="button"
+      class="absolute top-3.5 right-3.5 z-20 w-11 h-11 rounded-full flex items-center justify-center text-espresso bg-ivory/95 backdrop-blur-md border border-sage/20 hover:bg-espresso hover:text-ivory transition-colors shadow-sm active:scale-95"
+      aria-label="Close dish preview"
+    >
+      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <!-- Left / Top: Dish Image Container -->
+    <div class="w-full md:w-1/2 aspect-[4/3] md:aspect-auto relative bg-ivory-muted overflow-hidden flex-shrink-0">
+      <img
+        id="dish-modal-img"
+        src=""
+        alt=""
+        class="w-full h-full object-cover"
+        loading="lazy"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-espresso/40 via-transparent to-transparent pointer-events-none"></div>
+      
+      <!-- Inset Badge -->
+      <span
+        id="dish-modal-tag"
+        class="absolute bottom-4 left-4 px-3 py-1 rounded-full bg-ivory/95 backdrop-blur-md text-[9px] uppercase tracking-[0.2em] font-semibold text-espresso border border-sage/20"
+      >
+        Signature Selection
+      </span>
+    </div>
+
+    <!-- Right / Bottom: Editorial Details -->
+    <div class="w-full md:w-1/2 p-6 md:p-8 flex flex-col justify-between overflow-y-auto">
+      <div>
+        <div class="flex items-center gap-2 mb-2">
+          <span class="w-5 h-[1px] bg-gold"></span>
+          <span id="dish-modal-cat" class="text-[10px] uppercase tracking-[0.25em] font-semibold text-gold-dark">
+            Artisanal Culinary
+          </span>
+        </div>
+
+        <h3 id="dish-modal-title" class="font-serif text-2xl md:text-3xl text-espresso font-bold sm:font-semibold leading-tight mb-3">
+          Dish Name
+        </h3>
+
+        <p id="dish-modal-desc" class="text-xs sm:text-sm text-espresso-muted leading-relaxed font-normal mb-6">
+          Dish detailed description.
+        </p>
+
+        <!-- Culinary Craft Notes -->
+        <div class="p-3.5 rounded-xl bg-sage-pale/60 border border-sage/25 text-xs text-espresso-soft space-y-1 mb-6">
+          <span class="block text-[10px] uppercase tracking-wider text-espresso font-semibold">Hospitality Note</span>
+          <p id="dish-modal-note" class="leading-relaxed">
+            Freshly prepared to order in our kitchen at Model Town, Jalandhar.
+          </p>
+        </div>
+      </div>
+
+      <!-- Action Footer -->
+      <div class="pt-4 border-t border-sage/20 flex flex-col gap-2.5">
+        <button
+          type="button"
+          id="dish-modal-reserve-btn"
+          data-open-reservation
+          class="w-full py-3 rounded-full bg-espresso hover:bg-espresso-light text-ivory text-xs uppercase tracking-[0.2em] font-medium transition-all text-center shadow-sm hover:scale-[1.01] active:scale-[0.99]"
+        >
+          Reserve a Table
+        </button>
+        <a
+          id="dish-modal-whatsapp-link"
+          href={businessData.whatsappHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full py-2.5 rounded-full bg-transparent hover:bg-sage-pale/50 border border-sage/35 text-espresso text-xs uppercase tracking-[0.16em] font-medium transition-all text-center"
+        >
+          Ask Host on WhatsApp ↗
+        </a>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  function setupDishModal() {
+    const dialog = document.getElementById('dish-detail-dialog') as HTMLDialogElement | null;
+    const closeBtn = document.getElementById('close-dish-modal-btn');
+    const reserveBtn = document.getElementById('dish-modal-reserve-btn');
+    const imgEl = document.getElementById('dish-modal-img') as HTMLImageElement | null;
+    const titleEl = document.getElementById('dish-modal-title');
+    const descEl = document.getElementById('dish-modal-desc');
+    const catEl = document.getElementById('dish-modal-cat');
+    const tagEl = document.getElementById('dish-modal-tag');
+    const whatsappLink = document.getElementById('dish-modal-whatsapp-link') as HTMLAnchorElement | null;
+
+    if (!dialog) return;
+
+    // Listen for custom open-dish-modal event or clicks on cards with data-dish
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement | null;
+      const card = target?.closest('[data-dish-inspect]');
+      if (!card) return;
+
+      const name = card.getAttribute('data-dish-name') || '';
+      const desc = card.getAttribute('data-dish-desc') || '';
+      const cat = card.getAttribute('data-dish-cat') || '';
+      const tag = card.getAttribute('data-dish-tag') || 'Clubhouse Specialty';
+      const imgSrc = card.getAttribute('data-dish-img') || '';
+
+      if (titleEl) titleEl.textContent = name;
+      if (descEl) descEl.textContent = desc;
+      if (catEl) catEl.textContent = cat;
+      if (tagEl) tagEl.textContent = tag;
+      if (imgEl && imgSrc) {
+        imgEl.src = imgSrc;
+        imgEl.alt = name;
+      }
+
+      if (whatsappLink) {
+        whatsappLink.href = `https://wa.me/918699766654?text=${encodeURIComponent(
+          `Hello Clubhouse Cafe, I am interested in trying the ${name}. Can I reserve a table?`
+        )}`;
+      }
+
+      dialog.showModal();
+      document.body.classList.add('overflow-hidden');
+    });
+
+    function closeDialog() {
+      if (!dialog) return;
+      dialog.close();
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    closeBtn?.addEventListener('click', closeDialog);
+
+    reserveBtn?.addEventListener('click', () => {
+      closeDialog();
+      const resModal = document.getElementById('reservation-dialog') as HTMLDialogElement | null;
+      if (resModal) {
+        resModal.showModal();
+        document.body.classList.add('overflow-hidden');
+      }
+    });
+
+    dialog.addEventListener('click', (e) => {
+      const rect = dialog.getBoundingClientRect();
+      const isInDialog =
+        rect.top <= e.clientY &&
+        e.clientY <= rect.top + rect.height &&
+        rect.left <= e.clientX &&
+        e.clientX <= rect.left + rect.width;
+
+      if (!isInDialog) {
+        closeDialog();
+      }
+    });
+
+    dialog.addEventListener('close', () => {
+      document.body.classList.remove('overflow-hidden');
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupDishModal);
+  } else {
+    setupDishModal();
+  }
+</script>

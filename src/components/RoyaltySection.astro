@@ -1,0 +1,223 @@
+---
+import ClubhouseLogo from './ClubhouseLogo.astro';
+import { businessData } from '@/data/business';
+
+const whatsappEarlyAccessUrl = `https://wa.me/918699766654?text=${encodeURIComponent(
+  'Hello Clubhouse Cafe, I would love to be notified when the Clubhouse Royalty Program launches!'
+)}`;
+---
+
+<section
+  id="royalty"
+  class="relative py-20 md:py-28 px-6 md:px-12 lg:px-16 bg-cream/40 border-t border-espresso/8 overflow-hidden scroll-mt-24 content-auto"
+  aria-label="The Clubhouse Royalty Program"
+>
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      <!-- Left Column: Editorial Teaser & Story -->
+      <div class="lg:col-span-7 space-y-8">
+        <!-- Eyebrow Tag -->
+        <div class="flex items-center gap-3 mb-6">
+          <span class="w-8 h-[1px] bg-gold"></span>
+          <span class="text-[11px] uppercase tracking-[0.3em] font-semibold text-gold-dark">
+            Member Privilege · Coming Soon
+          </span>
+        </div>
+
+        <!-- Headline -->
+        <h2 class="font-serif text-4xl sm:text-5xl md:text-6xl text-espresso font-bold sm:font-semibold tracking-tight leading-[1.08]">
+          The Clubhouse <br />
+          <span class="font-serif italic text-gold-dark font-bold sm:font-semibold">
+            Royalty Club.
+          </span>
+        </h2>
+
+        <!-- Subtitle & Narrative -->
+        <div class="space-y-4">
+          <p class="font-serif text-xl sm:text-2xl text-espresso-muted font-normal italic leading-snug max-w-xl">
+            A quiet token of gratitude for those who make Clubhouse their second home.
+          </p>
+
+          <p class="text-sm md:text-base text-espresso-soft font-normal leading-relaxed max-w-xl">
+            We are quietly curating a bespoke loyalty program for our regular patrons across Jalandhar and Amritsar. Designed to celebrate unhurried conversations and slow roasts, the Royalty Club will bring intimate privileges, seasonal previews, and thoughtful culinary surprises to your table.
+          </p>
+        </div>
+
+        <!-- Elegant Teaser Columns — divider line style, no card boxes or AI sparkles -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-0 pt-2 divide-y sm:divide-y-0 sm:divide-x divide-espresso/10">
+          <div class="py-5 sm:py-0 sm:pr-6">
+            <span class="text-[10px] font-semibold tracking-[0.25em] text-gold-dark uppercase block mb-2">01 / Tastings</span>
+            <h3 class="font-serif text-base text-espresso font-medium mb-1.5">Curated Tastings</h3>
+            <p class="text-xs text-espresso-soft leading-relaxed font-normal">
+              Private previews of single-origin roasts and seasonal bakes before public release.
+            </p>
+          </div>
+
+          <div class="py-5 sm:py-0 sm:px-6">
+            <span class="text-[10px] font-semibold tracking-[0.25em] text-gold-dark uppercase block mb-2">02 / Celebrations</span>
+            <h3 class="font-serif text-base text-espresso font-medium mb-1.5">Celebratory Treats</h3>
+            <p class="text-xs text-espresso-soft leading-relaxed font-normal">
+              Thoughtful bakes and signature sweet surprises to mark your personal milestones.
+            </p>
+          </div>
+
+          <div class="py-5 sm:py-0 sm:pl-6">
+            <span class="text-[10px] font-semibold tracking-[0.25em] text-gold-dark uppercase block mb-2">03 / Hospitality</span>
+            <h3 class="font-serif text-base text-espresso font-medium mb-1.5">Table Courtesies</h3>
+            <p class="text-xs text-espresso-soft leading-relaxed font-normal">
+              Priority seating privileges and dedicated concierge assistance for your visits.
+            </p>
+          </div>
+        </div>
+
+        <!-- Actions (Full width on mobile for thumb tap target) -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-6 pt-2 w-full sm:w-auto">
+          <a
+            href={whatsappEarlyAccessUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-espresso hover:bg-espresso-light text-ivory text-xs uppercase tracking-[0.2em] font-medium transition-all duration-300 shadow-md hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] min-h-[48px] text-center"
+          >
+            <span>Register Early Interest</span>
+            <span class="text-gold">↗</span>
+          </a>
+
+          <span class="text-xs text-espresso-soft font-normal text-center sm:text-left">
+            Or speak with our team at Model Town, Jalandhar
+          </span>
+        </div>
+      </div>
+
+      <!-- Right Column: Visual Centerpiece — The Obsidian & Gold Member Card -->
+      <div class="lg:col-span-5 flex flex-col items-center justify-center">
+        <!-- 3D-styled Tactile Card Container with 21st.dev Specular Tilt Effect -->
+        <div id="royalty-tilt-container" class="w-full max-w-md perspective-[1000px] cursor-pointer">
+          <div
+            id="royalty-tilt-card"
+            class="relative aspect-[1.586/1] w-full rounded-2xl p-7 md:p-8 bg-gradient-to-br from-[#1E1916] via-[#14100E] to-[#26211C] text-ivory shadow-2xl border border-gold/35 overflow-hidden flex flex-col justify-between transition-transform duration-200 ease-out will-change-transform"
+          >
+            <!-- Specular Glare / Light Reflection Overlay -->
+            <div
+              id="card-glare"
+              class="absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-300 rounded-2xl z-20"
+              style="background: radial-gradient(circle 320px at 50% 50%, rgba(228, 211, 176, 0.22), transparent 70%);"
+            ></div>
+
+            <!-- Card Top Row: Chip & Official Logo -->
+            <div class="relative z-10 flex items-start justify-between">
+              <!-- Smart Chip Icon -->
+              <div class="w-11 h-9 rounded-lg bg-gradient-to-tr from-gold/40 via-gold-light to-gold/50 p-0.5 shadow-inner border border-gold/40 flex items-center justify-center">
+                <div class="w-full h-full rounded border border-espresso/20 flex flex-col justify-around p-1 opacity-75">
+                  <div class="w-full h-[1px] bg-espresso/40"></div>
+                  <div class="w-full h-[1px] bg-espresso/40"></div>
+                </div>
+              </div>
+
+              <!-- Official White Logo -->
+              <ClubhouseLogo variant="white" size="sm" />
+            </div>
+
+            <!-- Card Center: Watermark Typography -->
+            <div class="relative z-10 my-auto pt-2">
+              <span class="text-[9px] uppercase tracking-[0.35em] text-gold-light/70 font-semibold block mb-0.5">
+                Privilege Card
+              </span>
+              <p class="font-serif text-2xl sm:text-3xl tracking-wide font-bold sm:font-semibold text-ivory">
+                Clubhouse Royalty
+              </p>
+            </div>
+
+            <!-- Card Bottom Row: Member Placeholder & Destination -->
+            <div class="relative z-10 flex items-end justify-between pt-2 border-t border-white/10 text-xs">
+              <div>
+                <span class="text-[8px] uppercase tracking-[0.25em] text-ivory/50 block">Privilege For</span>
+                <span class="font-sans text-[11px] font-medium tracking-wider text-ivory/90 uppercase">
+                  Cherished Patron
+                </span>
+              </div>
+
+              <div class="text-right">
+                <span class="text-[8px] uppercase tracking-[0.25em] text-ivory/50 block">Locations</span>
+                <span class="font-serif italic text-xs text-gold-light font-medium">
+                  Jalandhar · Amritsar
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function setupRoyaltyTilt() {
+    const container = document.getElementById('royalty-tilt-container');
+    const card = document.getElementById('royalty-tilt-card');
+    const glare = document.getElementById('card-glare');
+
+    if (!container || !card || !glare) return;
+
+    let bounds: DOMRect;
+
+    function onMouseEnter() {
+      bounds = container!.getBoundingClientRect();
+      glare!.style.opacity = '1';
+    }
+
+    function onMouseMove(e: MouseEvent) {
+      if (!bounds) bounds = container!.getBoundingClientRect();
+      const mouseX = e.clientX - bounds.left;
+      const mouseY = e.clientY - bounds.top;
+
+      const xPct = (mouseX / bounds.width) - 0.5;
+      const yPct = (mouseY / bounds.height) - 0.5;
+
+      const rotateY = xPct * 24; // max 12 deg
+      const rotateX = -yPct * 24;
+
+      card!.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
+      glare!.style.background = `radial-gradient(circle 300px at ${mouseX}px ${mouseY}px, rgba(228, 211, 176, 0.28), transparent 70%)`;
+    }
+
+    function onMouseLeave() {
+      card!.style.transform = 'rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+      glare!.style.opacity = '0';
+    }
+
+    function onTouchMove(e: TouchEvent) {
+      if (!bounds) bounds = container!.getBoundingClientRect();
+      const touch = e.touches[0];
+      const touchX = touch.clientX - bounds.left;
+      const touchY = touch.clientY - bounds.top;
+
+      const xPct = (touchX / bounds.width) - 0.5;
+      const yPct = (touchY / bounds.height) - 0.5;
+
+      const rotateY = Math.max(-12, Math.min(12, xPct * 24));
+      const rotateX = Math.max(-12, Math.min(12, -yPct * 24));
+
+      card!.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
+      glare!.style.opacity = '1';
+      glare!.style.background = `radial-gradient(circle 260px at ${touchX}px ${touchY}px, rgba(228, 211, 176, 0.32), transparent 70%)`;
+    }
+
+    function onTouchEnd() {
+      card!.style.transform = 'rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+      glare!.style.opacity = '0';
+    }
+
+    container.addEventListener('mouseenter', onMouseEnter);
+    container.addEventListener('mousemove', onMouseMove);
+    container.addEventListener('mouseleave', onMouseLeave);
+    container.addEventListener('touchmove', onTouchMove, { passive: true });
+    container.addEventListener('touchend', onTouchEnd);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupRoyaltyTilt);
+  } else {
+    setupRoyaltyTilt();
+  }
+</script>

@@ -1,0 +1,292 @@
+---
+import '@/styles/global.css';
+import Header from '@/components/Header.astro';
+import MobileMenu from '@/components/MobileMenu.astro';
+import Footer from '@/components/Footer.astro';
+import ReservationModal from '@/components/ReservationModal.astro';
+import DishDetailModal from '@/components/DishDetailModal.astro';
+import { businessData } from '@/data/business';
+import { locationsData } from '@/data/locations';
+
+interface Props {
+  title?: string;
+  description?: string;
+  keywords?: string;
+  image?: string;
+  canonicalUrl?: string;
+  isLegalPage?: boolean;
+  pageName?: string;
+}
+
+const {
+  title = 'Clubhouse Café | Best Café in Model Town, Jalandhar · Coffee, Food & Good Company',
+  description = 'Experience Clubhouse Café in Model Town, Jalandhar. Handcrafted specialty coffee, artisanal bakery, authentic Neapolitan pizza, and serene architectural ambience.',
+  keywords = 'Clubhouse Cafe, Clubhouse Cafe Jalandhar, Best cafe in Model Town Jalandhar, coffee shop Jalandhar, Neapolitan pizza Jalandhar, artisanal bakery Jalandhar, brunch places in Jalandhar, aesthetic cafes Punjab, Clubhouse Amritsar',
+  image,
+  canonicalUrl,
+  isLegalPage = false,
+  pageName,
+} = Astro.props;
+
+const siteUrl = 'https://clubhousecafe.in';
+const pathname = Astro.url.pathname;
+const normalizedPath = pathname === '/' ? '/' : `${pathname.replace(/\/$/, '')}/`;
+const currentCanonical = canonicalUrl || new URL(normalizedPath, siteUrl).href;
+const currentImage = image || `${siteUrl}/images/optimized/ambience-dining-hall-1080w.webp`;
+
+// Comprehensive Schema.org JSON-LD Structured Data Graph
+const restaurantSchema = {
+  '@type': ['CafeOrCoffeeShop', 'Restaurant'],
+  '@id': `${siteUrl}/#organization`,
+  name: businessData.name,
+  alternateName: ['Clubhouse Cafe Jalandhar', 'Clubhouse Model Town'],
+  description: businessData.description,
+  url: siteUrl,
+  logo: `${siteUrl}/icon-512.png`,
+  image: [
+    `${siteUrl}/images/optimized/ambience-dining-hall-1080w.webp`,
+    `${siteUrl}/images/optimized/ambience-woven-booths-768w.webp`,
+    `${siteUrl}/images/optimized/buratta-neapolitan-pizza-1080w.webp`,
+    `${siteUrl}/images/optimized/tres-leches-1080w.webp`,
+  ],
+  telephone: businessData.phone,
+  priceRange: '₹₹',
+  servesCuisine: [
+    'Artisanal Coffee',
+    'Specialty Matcha',
+    'Neapolitan Pizza',
+    'Continental Brunch',
+    'Bakery & Viennoiserie',
+    'Artisanal Desserts',
+    'Mediterranean Small Plates',
+  ],
+  currenciesAccepted: 'INR',
+  paymentAccepted: 'Cash, Credit Card, Debit Card, UPI, Contactless',
+  acceptsReservations: 'True',
+  menu: `${siteUrl}/#menu`,
+  hasMenu: `${siteUrl}/#menu`,
+  potentialAction: {
+    '@type': 'ReserveAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: `${siteUrl}/#reservation`,
+      inLanguage: 'en-IN',
+      actionPlatform: [
+        'http://schema.org/DesktopWebPlatform',
+        'http://schema.org/MobileWebPlatform',
+      ],
+    },
+    result: {
+      '@type': 'FoodEstablishmentReservation',
+      name: 'Table Reservation at Clubhouse Café',
+    },
+  },
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Ground Floor, The Elite City Center, Model Town Rd, Abadpura, Model Town',
+    addressLocality: 'Jalandhar',
+    addressRegion: 'Punjab',
+    postalCode: '144001',
+    addressCountry: 'IN',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 31.3090,
+    longitude: 75.5792,
+  },
+  hasMap: businessData.googleMapsUrl,
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: [
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+        'Sunday',
+      ],
+      opens: '09:30',
+      closes: '00:00',
+    },
+  ],
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: businessData.rating.toString(),
+    reviewCount: '247',
+    bestRating: '5',
+    worstRating: '1',
+  },
+  sameAs: [businessData.instagramUrl, businessData.googleMapsUrl],
+};
+
+const breadcrumbItems: any[] = [
+  {
+    '@type': 'ListItem',
+    position: 1,
+    name: 'Home',
+    item: siteUrl,
+  },
+];
+
+if (isLegalPage && pageName) {
+  breadcrumbItems.push({
+    '@type': 'ListItem',
+    position: 2,
+    name: pageName,
+    item: currentCanonical,
+  });
+}
+
+const breadcrumbSchema = {
+  '@type': 'BreadcrumbList',
+  itemListElement: breadcrumbItems,
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [restaurantSchema, breadcrumbSchema],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#FAF8F5" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- Search Engine Indexing & Bot Directives -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+    <!-- Primary Metadata -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <link rel="canonical" href={currentCanonical} />
+
+    <!-- Geo / Local SEO Meta Tags (Model Town, Jalandhar, Punjab) -->
+    <meta name="geo.region" content="IN-PB" />
+    <meta name="geo.placename" content="Jalandhar, Punjab, India" />
+    <meta name="geo.position" content="31.3090;75.5792" />
+    <meta name="ICBM" content="31.3090, 75.5792" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="restaurant" />
+    <meta property="og:url" content={currentCanonical} />
+    <meta property="og:site_name" content="Clubhouse Café" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={currentImage} />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={currentImage} />
+
+    <!-- Favicon & Chrome Browser Tab Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Google Fonts Preconnect & Optimized WOFF2 Loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Critical LCP Hero Image Preloading -->
+    <link
+      rel="preload"
+      as="image"
+      href="/images/optimized/ambience-dining-hall-768w.webp"
+      type="image/webp"
+      media="(max-width: 768px)"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/images/optimized/ambience-dining-hall-1080w.webp"
+      type="image/webp"
+      media="(min-width: 769px)"
+      fetchpriority="high"
+    />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body class="bg-ivory text-espresso selection:bg-sage-light/60 selection:text-espresso">
+    <!-- Skip to main content landmark for keyboard accessibility -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-6 focus:py-3 focus:bg-espresso focus:text-ivory focus:rounded-full focus:shadow-xl focus:border focus:border-gold"
+    >
+      Skip to main content
+    </a>
+
+    <!-- Main Navigation Header -->
+    <Header />
+
+    <!-- Mobile Full Screen Navigation Drawer -->
+    <MobileMenu />
+
+    <!-- Main Page Content -->
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <!-- Global Reservation Dialog -->
+    <ReservationModal />
+
+    <!-- Editorial Dish Quick Peek Lightbox -->
+    <DishDetailModal />
+
+    <!-- Minimal Luxury Footer -->
+    <Footer />
+
+    <!-- Client-Side Animations & Lenis Smooth Scroll -->
+    <script>
+      import { initLenis } from '@/scripts/lenis';
+      import { initAnimations } from '@/scripts/animations';
+      import { initLiveStatus } from '@/scripts/status';
+
+      function startApp() {
+        // Immediate priority: live status & essential UI
+        initLiveStatus();
+
+        // Defer heavier GSAP & Lenis initialization so first paint is instantaneous
+        if ('requestIdleCallback' in window) {
+          window.requestIdleCallback(() => {
+            initLenis();
+            initAnimations();
+          }, { timeout: 600 });
+        } else {
+          setTimeout(() => {
+            initLenis();
+            initAnimations();
+          }, 60);
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', startApp);
+      } else {
+        startApp();
+      }
+    </script>
+  </body>
+</html>

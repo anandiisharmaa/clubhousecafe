@@ -1,0 +1,122 @@
+---
+// Desktop fine-pointer custom cursor
+---
+
+<div id="cursor-follower" class="cursor-follower hidden lg:flex" aria-hidden="true">
+  <span id="cursor-text" class="opacity-0 transition-opacity duration-200"></span>
+</div>
+<div id="cursor-dot" class="cursor-dot hidden lg:block" aria-hidden="true"></div>
+
+<script>
+  function initCustomCursor() {
+    // Only initialize on desktop with fine pointer and no reduced motion
+    const isFinePointer = window.matchMedia('(pointer: fine) and (min-width: 1024px)').matches;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!isFinePointer || prefersReducedMotion) return;
+
+    const follower = document.getElementById('cursor-follower');
+    const dot = document.getElementById('cursor-dot');
+    const cursorText = document.getElementById('cursor-text');
+
+    if (!follower || !dot || !cursorText) return;
+
+    let mouseX = -100;
+    let mouseY = -100;
+    let followerX = -100;
+    let followerY = -100;
+    let isVisible = false;
+
+    // Direct mouse position update for snappy dot
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+
+      if (!isVisible) {
+        follower.style.opacity = '1';
+        dot.style.opacity = '1';
+        followerX = mouseX;
+        followerY = mouseY;
+        isVisible = true;
+      }
+
+      dot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+    }, { passive: true });
+
+    document.addEventListener('mouseleave', () => {
+      follower.style.opacity = '0';
+      dot.style.opacity = '0';
+      isVisible = false;
+    });
+
+    document.addEventListener('mouseenter', () => {
+      follower.style.opacity = '1';
+      dot.style.opacity = '1';
+      isVisible = true;
+    });
+
+    // Smooth lerp loop for outer follower ring
+    function render() {
+      followerX += (mouseX - followerX) * 0.16;
+      followerY += (mouseY - followerY) * 0.16;
+
+      follower.style.transform = `translate(${followerX}px, ${followerY}px) translate(-50%, -50%)`;
+
+      requestAnimationFrame(render);
+    }
+    requestAnimationFrame(render);
+
+    // Event delegation for cursor contextual states
+    document.addEventListener('mouseover', (e) => {
+      const target = e.target as HTMLElement | null;
+      if (!target) return;
+
+      const viewEl = target.closest('[data-cursor="view"]');
+      const openEl = target.closest('[data-cursor="open"]');
+      const interactiveEl = target.closest('a, button, input, [role="button"]');
+
+      if (viewEl) {
+        follower.classList.add('is-hovering-view');
+        follower.classList.remove('is-hovering-interactive');
+        cursorText.textContent = 'VIEW';
+        cursorText.classList.remove('opacity-0');
+        dot.classList.add('is-hidden');
+      } else if (openEl) {
+        follower.classList.add('is-hovering-interactive');
+        follower.classList.remove('is-hovering-view');
+        cursorText.textContent = 'OPEN';
+        cursorText.classList.remove('opacity-0');
+        dot.classList.add('is-hidden');
+      } else if (interactiveEl) {
+        follower.classList.add('is-hovering-interactive');
+        follower.classList.remove('is-hovering-view');
+        cursorText.textContent = '';
+        cursorText.classList.add('opacity-0');
+        dot.classList.add('is-hidden');
+      }
+    });
+
+    document.addEventListener('mouseout', (e) => {
+      const target = e.target as HTMLElement | null;
+      if (!target) return;
+
+      const viewEl = target.closest('[data-cursor="view"]');
+      const openEl = target.closest('[data-cursor="open"]');
+      const interactiveEl = target.closest('a, button, input, [role="button"]');
+
+      if (viewEl || openEl || interactiveEl) {
+        follower.classList.remove('is-hovering-view', 'is-hovering-interactive');
+        cursorText.textContent = '';
+        cursorText.classList.add('opacity-0');
+        dot.classList.remove('is-hidden');
+      }
+    });
+  }
+
+  // Run on initial load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCustomCursor);
+  } else {
+    initCustomCursor();
+  }
+</script>

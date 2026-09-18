@@ -1,0 +1,300 @@
+---
+import OptimizedImage from './OptimizedImage.astro';
+import { menuCategories, menuItems } from '@/data/menu';
+import { businessData } from '@/data/business';
+
+// 9 balanced curated items for a full 3x3 grid
+const displayItems = menuItems.slice(0, 9);
+---
+
+<section
+  id="menu"
+  class="relative py-20 md:py-28 px-6 md:px-12 lg:px-16 bg-ivory overflow-hidden"
+  aria-label="Clubhouse Café Menu Preview"
+>
+  <!-- Tactile Archival Grain / Menu Paper Linen Texture -->
+  <div
+    class="pointer-events-none absolute inset-0 z-0 opacity-[0.07] mix-blend-multiply archival-grain"
+    aria-hidden="true"
+  ></div>
+
+  <!-- Soft Ambient Glow Orbs -->
+  <div class="pointer-events-none absolute inset-0 overflow-hidden z-0" aria-hidden="true">
+    <div class="absolute -top-36 -right-20 w-[480px] h-[480px] rounded-full bg-gold/12 blur-[100px]"></div>
+    <div class="absolute -bottom-36 -left-20 w-[480px] h-[480px] rounded-full bg-sage-light/15 blur-[100px]"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto relative z-10">
+    <!-- Section Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+      <div>
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-8 h-[1px] bg-gold"></span>
+          <span class="text-[11px] uppercase tracking-[0.3em] font-semibold text-gold-dark">
+            Culinary Craftsmanship
+          </span>
+        </div>
+        <h2 class="font-serif text-4xl sm:text-5xl md:text-6xl text-espresso tracking-tight leading-[1.08] font-bold sm:font-semibold">
+          Something For <br />
+          <span class="font-serif italic text-gold-dark font-bold sm:font-semibold">Every Mood.</span>
+        </h2>
+      </div>
+
+      <div class="max-w-md">
+        <p class="text-xs sm:text-sm text-espresso-muted leading-relaxed mb-6 font-normal">
+          From slow-steeped espresso and ceremonial matcha to leopard-crusted Neapolitan pizzas and handcrafted confections.
+        </p>
+
+        <!-- Category Filter Pills (Horizontal touch swipe on mobile, wrap on tablet/desktop) -->
+        <div class="relative">
+          <div class="flex overflow-x-auto scrollbar-none pb-2 -mx-6 px-6 md:mx-0 md:px-0 md:flex-wrap gap-2.5 items-center scroll-smooth" role="tablist" aria-label="Menu Categories">
+            <button
+              type="button"
+              class="menu-filter-btn active flex-shrink-0 whitespace-nowrap min-h-[40px] px-4 py-2 rounded-full text-[11px] uppercase tracking-[0.16em] font-medium border border-espresso bg-espresso text-ivory transition-all duration-200"
+              data-category="all"
+              role="tab"
+              aria-selected="true"
+            >
+              All Moods
+            </button>
+            {menuCategories.map((cat) => (
+              <button
+                type="button"
+                class="menu-filter-btn flex-shrink-0 whitespace-nowrap min-h-[40px] px-4 py-2 rounded-full text-[11px] uppercase tracking-[0.16em] font-medium border border-sage/30 bg-transparent text-espresso/80 hover:border-espresso hover:text-espresso transition-all duration-200"
+                data-category={cat.id}
+                role="tab"
+                aria-selected="false"
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
+          <!-- Subtle Right Edge Fade Gradient Cue on Mobile -->
+          <div class="pointer-events-none absolute -right-6 top-0 bottom-2 w-10 bg-gradient-to-l from-ivory to-transparent md:hidden" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Balanced 3-Column Editorial Menu Grid -->
+    <div
+      id="menu-grid"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6"
+    >
+      {menuItems.map((item) => (
+        <article
+          class="menu-card group relative rounded-xl bg-ivory-muted overflow-hidden flex flex-col transition-shadow duration-300 hover:shadow-xl cursor-pointer"
+          data-category={item.category}
+          data-dish-inspect
+          data-dish-name={item.name}
+          data-dish-desc={item.description}
+          data-dish-cat={item.category === 'coffee' ? 'Beverage' : item.category === 'bites' ? 'Small Plate' : item.category === 'mains' ? 'Main Plate' : 'Artisanal Confection'}
+          data-dish-tag={item.tag || 'Clubhouse Specialty'}
+          data-dish-img={`/images/optimized/${item.imageId}-1080w.webp`}
+        >
+          <!-- Image Frame -->
+          <div class="relative aspect-[4/3] overflow-hidden bg-ivory-muted">
+            <OptimizedImage
+              id={item.imageId}
+              class="w-full h-full"
+              imgClass="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-espresso/40 via-transparent to-transparent pointer-events-none"></div>
+
+            {item.tag && (
+              <div class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-ivory/90 text-[9px] uppercase tracking-[0.2em] font-semibold text-espresso">
+                {item.tag}
+              </div>
+            )}
+
+            <!-- Hover Quick Peek Pill -->
+            <div class="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-3 py-1 rounded-full bg-ivory/95 backdrop-blur-md text-[9px] uppercase tracking-wider font-semibold text-espresso shadow-sm">
+              Quick Peek ↗
+            </div>
+          </div>
+
+          <!-- Content Details -->
+          <div class="p-6 md:p-7 flex flex-col justify-between flex-grow">
+            <div>
+              <span class="text-[10px] uppercase tracking-[0.25em] text-gold-dark font-semibold block mb-1">
+                {item.category === 'coffee' ? 'Beverage' : item.category === 'bites' ? 'Small Plate' : item.category === 'mains' ? 'Main Plate' : 'Artisanal Confection'}
+              </span>
+              <h3 class="font-serif text-2xl text-espresso font-bold sm:font-semibold group-hover:text-gold-dark transition-colors mb-2 leading-snug">
+                {item.name}
+              </h3>
+              <p class="text-xs text-espresso-muted leading-relaxed font-normal">
+                {item.description}
+              </p>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-sage/15 flex items-center justify-between text-[11px] text-espresso-soft">
+              <span class="hover:text-espresso transition-colors">Click to Inspect</span>
+              <span class="font-serif italic text-gold-dark">
+                Details & Notes →
+              </span>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- View More / Expand Toggle Button -->
+    <div id="menu-expand-container" class="mt-10 flex flex-col items-center justify-center gap-3">
+      <button
+        id="menu-toggle-expand-btn"
+        type="button"
+        class="group inline-flex items-center gap-3 px-8 py-3.5 rounded-full border border-espresso bg-ivory text-espresso hover:bg-espresso hover:text-ivory text-xs uppercase tracking-[0.2em] font-medium transition-all duration-300 shadow-sm hover:shadow-md active:scale-[0.98] cursor-pointer"
+        aria-expanded="false"
+      >
+        <span id="menu-toggle-text">View More Dishes (10 More)</span>
+        <svg
+          id="menu-toggle-icon"
+          class="w-4 h-4 text-gold-dark group-hover:text-gold-light transition-transform duration-300"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <p id="menu-expand-hint" class="text-[11px] text-espresso-soft tracking-wider font-medium">
+        Showing 6 of 16 Curated Specialties
+      </p>
+    </div>
+
+    <!-- Bottom Menu Action -->
+    <div class="mt-14 pt-8 border-t border-sage/20 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div>
+        <p class="font-serif text-xl sm:text-2xl text-espresso font-normal">Curious to explore our seasonal kitchen offerings?</p>
+        <p class="text-xs text-espresso-muted mt-1">Connect with our host team on WhatsApp to receive the complete daily menu.</p>
+      </div>
+
+      <div class="flex items-center gap-4 w-full sm:w-auto">
+        <a
+          href={businessData.whatsappHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-espresso hover:bg-espresso-light text-ivory text-xs uppercase tracking-[0.18em] font-medium transition-all duration-300 shadow-sm hover:scale-[1.02] active:scale-[0.98] min-h-[48px]"
+        >
+          <span>View Full Menu</span>
+          <svg class="w-3.5 h-3.5 text-gold-light" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function setupMenuInteractive() {
+    const filterButtons = document.querySelectorAll('.menu-filter-btn');
+    const cards = document.querySelectorAll<HTMLElement>('.menu-card');
+    const expandContainer = document.getElementById('menu-expand-container');
+    const toggleBtn = document.getElementById('menu-toggle-expand-btn');
+    const toggleText = document.getElementById('menu-toggle-text');
+    const toggleIcon = document.getElementById('menu-toggle-icon');
+    const expandHint = document.getElementById('menu-expand-hint');
+
+    let currentCategory = 'all';
+    let isExpanded = false;
+
+    function renderCards() {
+      let visibleCount = 0;
+      let totalMatching = 0;
+
+      cards.forEach((card) => {
+        const cardCategory = card.getAttribute('data-category');
+        const matchesCategory = currentCategory === 'all' || cardCategory === currentCategory;
+
+        if (matchesCategory) {
+          totalMatching++;
+          // If 'all' and not expanded, only show first 6
+          if (currentCategory === 'all' && !isExpanded) {
+            if (visibleCount < 6) {
+              card.classList.remove('hidden');
+              card.style.display = 'flex';
+              visibleCount++;
+            } else {
+              card.classList.add('hidden');
+              card.style.display = 'none';
+            }
+          } else {
+            // Either expanded or specific category selected
+            card.classList.remove('hidden');
+            card.style.display = 'flex';
+            visibleCount++;
+          }
+        } else {
+          card.classList.add('hidden');
+          card.style.display = 'none';
+        }
+      });
+
+      // Update Expand Button & Hint visibility
+      if (expandContainer && toggleBtn && toggleText && toggleIcon && expandHint) {
+        if (currentCategory === 'all') {
+          expandContainer.style.display = 'flex';
+          if (isExpanded) {
+            toggleText.textContent = 'Show Less';
+            toggleIcon.style.transform = 'rotate(180deg)';
+            expandHint.textContent = `Showing all ${totalMatching} Curated Specialties`;
+            toggleBtn.setAttribute('aria-expanded', 'true');
+          } else {
+            const hiddenCount = totalMatching - 6;
+            toggleText.textContent = `View More Dishes (${hiddenCount} More)`;
+            toggleIcon.style.transform = 'rotate(0deg)';
+            expandHint.textContent = `Showing 6 of ${totalMatching} Curated Specialties`;
+            toggleBtn.setAttribute('aria-expanded', 'false');
+          }
+        } else {
+          // In a specific category (4 items each), all are visible, so hide expand toggle
+          expandContainer.style.display = 'none';
+        }
+      }
+    }
+
+    // Toggle button click
+    toggleBtn?.addEventListener('click', () => {
+      isExpanded = !isExpanded;
+      renderCards();
+
+      // If collapsing, smoothly scroll back to top of menu
+      if (!isExpanded) {
+        const menuSection = document.getElementById('menu');
+        menuSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+
+    // Category filter click
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        currentCategory = btn.getAttribute('data-category') || 'all';
+
+        filterButtons.forEach((b) => {
+          b.classList.remove('active', 'bg-espresso', 'text-ivory', 'border-espresso');
+          b.classList.add('bg-transparent', 'text-espresso/80', 'border-sage/30');
+          b.setAttribute('aria-selected', 'false');
+        });
+
+        btn.classList.add('active', 'bg-espresso', 'text-ivory', 'border-espresso');
+        btn.classList.remove('bg-transparent', 'text-espresso/80', 'border-sage/30');
+        btn.setAttribute('aria-selected', 'true');
+
+        // Smoothly auto-center active filter button in horizontal swipe track
+        btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+
+        renderCards();
+      });
+    });
+
+    // Initial render
+    renderCards();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupMenuInteractive);
+  } else {
+    setupMenuInteractive();
+  }
+</script>
