@@ -27,7 +27,7 @@ export const businessData: BusinessInfo = {
   tagline: 'Coffee. Food. Company.',
   heroHeadline: 'A PLACE TO',
   heroItalic: 'SLOW DOWN.',
-  heroSubtext: 'Coffee, conversations & beautiful plates in good company.',
+  heroSubtext: 'Your favourite Coffee, Comfort food & Fresh Bakes',
   description:
     'Nestled in the heart of Jalandhar, Punjab, Clubhouse Cafe is a charming coffee shop that offers a warm and inviting atmosphere. It is the ideal destination for coffee enthusiasts, food lovers and anyone looking for a cozy spot to socialise, read, or simply savour a delightful cup of coffee.',
   phone: '086997 66654',
