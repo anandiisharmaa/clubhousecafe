@@ -138,11 +138,24 @@ const METADATA_MAP = {
     alt: 'Curved olive green woven partition screens with low ivory bouclé lounge chairs and modern marble pedestal tables under warm ambient paper lanterns.',
   },
   'ChatGPT Image Sep 17, 2026, 05_49_47 PM.png': {
-    id: 'ambience-dining-hall',
+    id: 'ambience-interior-dining',
     title: 'The Main Dining Sanctuary',
     category: 'ambience',
     alt: 'Spacious main dining hall with sage green upholstered chairs, marble tables, long ivory curved banquette, skylight ceiling coffer, and warm plaster arches.',
   },
+  'ChatGPT Image Sep 19, 2026, 08_55_48 PM.png': {
+    id: 'ambience-exterior-night-v1',
+    title: 'Clubhouse Café Exterior Night — v1',
+    category: 'ambience',
+    alt: 'Clubhouse Café dramatic night-time exterior with glowing green hedge signage, golden CLUBHOUSE lettering, checkered marble courtyard, velvet rope entrance, and lit facade.',
+  },
+  'Untitled design (28).png': {
+    id: 'ambience-dining-hall',
+    title: 'Clubhouse Café — Grand Exterior Entrance',
+    category: 'ambience',
+    alt: 'Clubhouse Café stunning night exterior: glowing golden CLUBHOUSE hedge sign, lit facade with CLUBHOUSE CAFE signage, Clubhouse branded flower bucket, velvet rope entrance, and elegant checkered marble courtyard.',
+  },
+
   'ChatGPT Image Sep 17, 2026, 05_49_53 PM.png': {
     id: 'ambience-sculptural-nook',
     title: 'Sculptural Seating Corner',

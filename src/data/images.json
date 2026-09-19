@@ -272,17 +272,17 @@
     "webpSrcset": "/images/optimized/ambience-woven-booths-480w.webp 480w, /images/optimized/ambience-woven-booths-768w.webp 768w",
     "sizes": "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
   },
-  "ambience-dining-hall": {
-    "id": "ambience-dining-hall",
+  "ambience-interior-dining": {
+    "id": "ambience-interior-dining",
     "title": "The Main Dining Sanctuary",
     "category": "ambience",
     "alt": "Spacious main dining hall with sage green upholstered chairs, marble tables, long ivory curved banquette, skylight ceiling coffer, and warm plaster arches.",
     "width": 1536,
     "height": 1024,
     "aspectRatio": 1.5,
-    "defaultSrc": "/images/optimized/ambience-dining-hall-1080w.webp",
-    "avifSrcset": "/images/optimized/ambience-dining-hall-480w.avif 480w, /images/optimized/ambience-dining-hall-768w.avif 768w, /images/optimized/ambience-dining-hall-1080w.avif 1080w, /images/optimized/ambience-dining-hall-1440w.avif 1440w",
-    "webpSrcset": "/images/optimized/ambience-dining-hall-480w.webp 480w, /images/optimized/ambience-dining-hall-768w.webp 768w, /images/optimized/ambience-dining-hall-1080w.webp 1080w, /images/optimized/ambience-dining-hall-1440w.webp 1440w",
+    "defaultSrc": "/images/optimized/ambience-interior-dining-1080w.webp",
+    "avifSrcset": "/images/optimized/ambience-interior-dining-480w.avif 480w, /images/optimized/ambience-interior-dining-768w.avif 768w, /images/optimized/ambience-interior-dining-1080w.avif 1080w, /images/optimized/ambience-interior-dining-1440w.avif 1440w",
+    "webpSrcset": "/images/optimized/ambience-interior-dining-480w.webp 480w, /images/optimized/ambience-interior-dining-768w.webp 768w, /images/optimized/ambience-interior-dining-1080w.webp 1080w, /images/optimized/ambience-interior-dining-1440w.webp 1440w",
     "sizes": "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
   },
   "ambience-sculptural-nook": {
@@ -322,6 +322,45 @@
     "defaultSrc": "/images/optimized/ambience-curved-banquette-1080w.webp",
     "avifSrcset": "/images/optimized/ambience-curved-banquette-480w.avif 480w, /images/optimized/ambience-curved-banquette-768w.avif 768w, /images/optimized/ambience-curved-banquette-1080w.avif 1080w",
     "webpSrcset": "/images/optimized/ambience-curved-banquette-480w.webp 480w, /images/optimized/ambience-curved-banquette-768w.webp 768w, /images/optimized/ambience-curved-banquette-1080w.webp 1080w",
+    "sizes": "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+  },
+  "ambience-exterior-night-v1": {
+    "id": "ambience-exterior-night-v1",
+    "title": "Clubhouse Café Exterior Night — v1",
+    "category": "ambience",
+    "alt": "Clubhouse Café dramatic night-time exterior with glowing green hedge signage, golden CLUBHOUSE lettering, checkered marble courtyard, velvet rope entrance, and lit facade.",
+    "width": 939,
+    "height": 1675,
+    "aspectRatio": 0.5606,
+    "defaultSrc": "/images/optimized/ambience-exterior-night-v1-768w.webp",
+    "avifSrcset": "/images/optimized/ambience-exterior-night-v1-480w.avif 480w, /images/optimized/ambience-exterior-night-v1-768w.avif 768w",
+    "webpSrcset": "/images/optimized/ambience-exterior-night-v1-480w.webp 480w, /images/optimized/ambience-exterior-night-v1-768w.webp 768w",
+    "sizes": "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+  },
+  "untitled-design-27-png": {
+    "id": "untitled-design-27-png",
+    "title": "Untitled design (27)",
+    "category": "general",
+    "alt": "Clubhouse Café presentation.",
+    "width": 939,
+    "height": 1675,
+    "aspectRatio": 0.5606,
+    "defaultSrc": "/images/optimized/untitled-design-27-png-768w.webp",
+    "avifSrcset": "/images/optimized/untitled-design-27-png-480w.avif 480w, /images/optimized/untitled-design-27-png-768w.avif 768w",
+    "webpSrcset": "/images/optimized/untitled-design-27-png-480w.webp 480w, /images/optimized/untitled-design-27-png-768w.webp 768w",
+    "sizes": "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+  },
+  "ambience-dining-hall": {
+    "id": "ambience-dining-hall",
+    "title": "Clubhouse Café — Grand Exterior Entrance",
+    "category": "ambience",
+    "alt": "Clubhouse Café stunning night exterior: glowing golden CLUBHOUSE hedge sign, lit facade with CLUBHOUSE CAFE signage, Clubhouse branded flower bucket, velvet rope entrance, and elegant checkered marble courtyard.",
+    "width": 939,
+    "height": 1379,
+    "aspectRatio": 0.6809,
+    "defaultSrc": "/images/optimized/ambience-dining-hall-768w.webp",
+    "avifSrcset": "/images/optimized/ambience-dining-hall-480w.avif 480w, /images/optimized/ambience-dining-hall-768w.avif 768w",
+    "webpSrcset": "/images/optimized/ambience-dining-hall-480w.webp 480w, /images/optimized/ambience-dining-hall-768w.webp 768w",
     "sizes": "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
   }
 }
