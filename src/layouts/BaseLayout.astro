@@ -237,9 +237,17 @@ const jsonLd = {
     <link
       rel="preload"
       as="image"
+      href="/images/optimized/ambience-hero-mobile-480w.avif"
+      type="image/avif"
+      media="(max-width: 640px)"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
       href="/images/optimized/ambience-dining-hall-768w.avif"
       type="image/avif"
-      media="(max-width: 768px)"
+      media="(min-width: 641px) and (max-width: 1024px)"
       fetchpriority="high"
     />
     <link
@@ -247,7 +255,7 @@ const jsonLd = {
       as="image"
       href="/images/optimized/ambience-dining-hall-1080w.avif"
       type="image/avif"
-      media="(min-width: 769px)"
+      media="(min-width: 1025px)"
       fetchpriority="high"
     />
 

@@ -259,6 +259,19 @@
     "webpSrcset": "/images/optimized/whole-protein-wrap-480w.webp 480w, /images/optimized/whole-protein-wrap-768w.webp 768w, /images/optimized/whole-protein-wrap-1080w.webp 1080w",
     "sizes": "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
   },
+  "ambience-hero-mobile-png": {
+    "id": "ambience-hero-mobile-png",
+    "title": "ambience-hero-mobile",
+    "category": "general",
+    "alt": "Clubhouse Café presentation.",
+    "width": 1000,
+    "height": 2040,
+    "aspectRatio": 0.4902,
+    "defaultSrc": "/images/optimized/ambience-hero-mobile-png-1080w.webp",
+    "avifSrcset": "/images/optimized/ambience-hero-mobile-png-480w.avif 480w, /images/optimized/ambience-hero-mobile-png-768w.avif 768w, /images/optimized/ambience-hero-mobile-png-1080w.avif 1080w",
+    "webpSrcset": "/images/optimized/ambience-hero-mobile-png-480w.webp 480w, /images/optimized/ambience-hero-mobile-png-768w.webp 768w, /images/optimized/ambience-hero-mobile-png-1080w.webp 1080w",
+    "sizes": "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+  },
   "ambience-woven-booths": {
     "id": "ambience-woven-booths",
     "title": "Woven Privacy Booths",
@@ -337,19 +350,6 @@
     "webpSrcset": "/images/optimized/ambience-exterior-night-v1-480w.webp 480w, /images/optimized/ambience-exterior-night-v1-768w.webp 768w",
     "sizes": "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
   },
-  "untitled-design-27-png": {
-    "id": "untitled-design-27-png",
-    "title": "Untitled design (27)",
-    "category": "general",
-    "alt": "Clubhouse Café presentation.",
-    "width": 939,
-    "height": 1675,
-    "aspectRatio": 0.5606,
-    "defaultSrc": "/images/optimized/untitled-design-27-png-768w.webp",
-    "avifSrcset": "/images/optimized/untitled-design-27-png-480w.avif 480w, /images/optimized/untitled-design-27-png-768w.avif 768w",
-    "webpSrcset": "/images/optimized/untitled-design-27-png-480w.webp 480w, /images/optimized/untitled-design-27-png-768w.webp 768w",
-    "sizes": "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-  },
   "ambience-dining-hall": {
     "id": "ambience-dining-hall",
     "title": "Clubhouse Café — Grand Exterior Entrance",
@@ -361,6 +361,19 @@
     "defaultSrc": "/images/optimized/ambience-dining-hall-768w.webp",
     "avifSrcset": "/images/optimized/ambience-dining-hall-480w.avif 480w, /images/optimized/ambience-dining-hall-768w.avif 768w",
     "webpSrcset": "/images/optimized/ambience-dining-hall-480w.webp 480w, /images/optimized/ambience-dining-hall-768w.webp 768w",
+    "sizes": "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+  },
+  "untitled-design-28-png": {
+    "id": "untitled-design-28-png",
+    "title": "Untitled design (28)",
+    "category": "general",
+    "alt": "Clubhouse Café presentation.",
+    "width": 1000,
+    "height": 2040,
+    "aspectRatio": 0.4902,
+    "defaultSrc": "/images/optimized/untitled-design-28-png-1080w.webp",
+    "avifSrcset": "/images/optimized/untitled-design-28-png-480w.avif 480w, /images/optimized/untitled-design-28-png-768w.avif 768w, /images/optimized/untitled-design-28-png-1080w.avif 1080w",
+    "webpSrcset": "/images/optimized/untitled-design-28-png-480w.webp 480w, /images/optimized/untitled-design-28-png-768w.webp 768w, /images/optimized/untitled-design-28-png-1080w.webp 1080w",
     "sizes": "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
   }
 }

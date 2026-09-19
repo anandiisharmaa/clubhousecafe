@@ -149,7 +149,7 @@ const METADATA_MAP = {
     category: 'ambience',
     alt: 'Clubhouse Café dramatic night-time exterior with glowing green hedge signage, golden CLUBHOUSE lettering, checkered marble courtyard, velvet rope entrance, and lit facade.',
   },
-  'Untitled design (28).png': {
+  'Untitled design (27).png': {
     id: 'ambience-dining-hall',
     title: 'Clubhouse Café — Grand Exterior Entrance',
     category: 'ambience',

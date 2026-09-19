@@ -10,13 +10,42 @@ import { businessData } from '@/data/business';
 >
   <!-- Full-Bleed Architectural Visual Canvas with Ken-Burns Ambient Motion -->
   <div class="hero-media-wrapper absolute inset-0 z-0">
-    <OptimizedImage
-      id="ambience-dining-hall"
-      priority={true}
-      class="w-full h-full"
-      imgClass="w-full h-full object-cover object-top sm:object-[center_12%] scale-100 will-change-transform motion-safe:animate-hero-kenburns"
-      sizes="100vw"
-    />
+    <picture class="block overflow-hidden w-full h-full">
+      <!-- Mobile Art-Directed Hero: hedge sign & building board 100% visible with safe margins, seamless sky & floor transitions -->
+      <source
+        media="(max-width: 640px)"
+        type="image/avif"
+        srcset="/images/optimized/ambience-hero-mobile-480w.avif 480w, /images/optimized/ambience-hero-mobile-768w.avif 768w, /images/optimized/ambience-hero-mobile-1000w.avif 1000w"
+        sizes="100vw"
+      />
+      <source
+        media="(max-width: 640px)"
+        type="image/webp"
+        srcset="/images/optimized/ambience-hero-mobile-480w.webp 480w, /images/optimized/ambience-hero-mobile-768w.webp 768w, /images/optimized/ambience-hero-mobile-1000w.webp 1000w"
+        sizes="100vw"
+      />
+      <!-- Desktop & Tablet Hero: Widescreen high-resolution exterior view -->
+      <source
+        type="image/avif"
+        srcset="/images/optimized/ambience-dining-hall-768w.avif 768w, /images/optimized/ambience-dining-hall-1080w.avif 1080w"
+        sizes="100vw"
+      />
+      <source
+        type="image/webp"
+        srcset="/images/optimized/ambience-dining-hall-768w.webp 768w, /images/optimized/ambience-dining-hall-1080w.webp 1080w"
+        sizes="100vw"
+      />
+      <img
+        src="/images/optimized/ambience-dining-hall-1080w.webp"
+        alt="Clubhouse Café stunning night exterior: glowing golden CLUBHOUSE hedge sign, lit facade with CLUBHOUSE CAFE signage, Clubhouse branded flower bucket, velvet rope entrance, and elegant checkered marble courtyard."
+        width="939"
+        height="1379"
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
+        class="w-full h-full object-cover object-top sm:object-[center_12%] scale-100 will-change-transform motion-safe:animate-hero-kenburns"
+      />
+    </picture>
     <!-- Haute-Couture Lighting, Warm Ambient Spotlight & Depth Gradients -->
     <div class="absolute inset-0 bg-gradient-to-t from-[#120E0C]/95 via-[#120E0C]/35 to-[#120E0C]/25 pointer-events-none"></div>
     <div class="absolute inset-0 bg-gradient-to-r from-[#120E0C]/85 via-[#120E0C]/35 to-transparent pointer-events-none"></div>
@@ -125,17 +154,6 @@ import { businessData } from '@/data/business';
         </span>
       </div>
 
-      <!-- Center: Capsule Scroll Indicator -->
-      <a
-        href="#about"
-        class="flex flex-col items-center gap-1.5 text-gold-light/70 hover:text-gold-light transition-colors group cursor-pointer"
-        aria-label="Scroll to discover story"
-      >
-        <div class="w-5 h-8 rounded-full border border-gold/40 p-1 flex justify-center bg-black/20 group-hover:border-gold/70 transition-colors">
-          <span class="w-1 h-2 rounded-full bg-gold animate-scroll-pill"></span>
-        </div>
-        <span class="text-[8px] uppercase tracking-[0.3em] text-ivory/50 group-hover:text-gold-light transition-colors">Scroll</span>
-      </a>
 
       <!-- Right: Instagram handle -->
       <a
@@ -186,33 +204,6 @@ import { businessData } from '@/data/business';
     animation: shimmer-sweep 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   }
 
-  /* Luxury Capsule Scroll Indicator Sliding Dot */
-  @keyframes scroll-pill {
-    0% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-    50% {
-      transform: translateY(8px);
-      opacity: 0.8;
-    }
-    75% {
-      transform: translateY(12px);
-      opacity: 0;
-    }
-    76% {
-      transform: translateY(0);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-
-  .animate-scroll-pill {
-    animation: scroll-pill 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
-  }
 
   /* Mobile-first entrance stagger (100% GPU accelerated, 0 lag before JS load) */
   @media (max-width: 1023px) {
