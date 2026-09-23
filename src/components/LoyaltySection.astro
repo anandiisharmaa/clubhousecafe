@@ -3,15 +3,18 @@ import ClubhouseLogo from './ClubhouseLogo.astro';
 import { businessData } from '@/data/business';
 
 const whatsappEarlyAccessUrl = `https://wa.me/918699766654?text=${encodeURIComponent(
-  'Hello Clubhouse Cafe, I would love to be notified when the Clubhouse Royalty Program launches!'
+  'Hello Clubhouse Cafe, I would love to be notified when the Clubhouse Loyalty Program launches!'
 )}`;
 ---
 
 <section
-  id="royalty"
+  id="loyalty"
   class="relative py-20 md:py-28 px-6 md:px-12 lg:px-16 bg-cream/40 border-t border-espresso/8 overflow-hidden scroll-mt-24 content-auto"
-  aria-label="The Clubhouse Royalty Program"
+  aria-label="The Clubhouse Loyalty Program"
 >
+  <!-- Backward-compatibility anchor for existing bookmarks -->
+  <span id="royalty" class="sr-only"></span>
+
   <div class="max-w-7xl mx-auto">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
       <!-- Left Column: Editorial Teaser & Story -->
@@ -28,7 +31,7 @@ const whatsappEarlyAccessUrl = `https://wa.me/918699766654?text=${encodeURICompo
         <h2 class="font-serif text-4xl sm:text-5xl md:text-6xl text-espresso font-bold sm:font-semibold tracking-tight leading-[1.08]">
           The Clubhouse <br />
           <span class="font-serif italic text-gold-dark font-bold sm:font-semibold">
-            Royalty Club.
+            Loyalty Program.
           </span>
         </h2>
 
@@ -39,7 +42,7 @@ const whatsappEarlyAccessUrl = `https://wa.me/918699766654?text=${encodeURICompo
           </p>
 
           <p class="text-sm md:text-base text-espresso-soft font-normal leading-relaxed max-w-xl">
-            We are quietly curating a bespoke loyalty program for our regular patrons across Jalandhar and Amritsar. Designed to celebrate unhurried conversations and slow roasts, the Royalty Club will bring intimate privileges, seasonal previews, and thoughtful culinary surprises to your table.
+            We are quietly curating a bespoke loyalty program for our regular patrons across Jalandhar and Amritsar. Designed to celebrate unhurried conversations and slow roasts, the Loyalty Program will bring intimate privileges, seasonal previews, and thoughtful culinary surprises to your table.
           </p>
         </div>
 
@@ -90,10 +93,10 @@ const whatsappEarlyAccessUrl = `https://wa.me/918699766654?text=${encodeURICompo
 
       <!-- Right Column: Visual Centerpiece — The Obsidian & Gold Member Card -->
       <div class="lg:col-span-5 flex flex-col items-center justify-center">
-        <!-- 3D-styled Tactile Card Container with 21st.dev Specular Tilt Effect -->
-        <div id="royalty-tilt-container" class="w-full max-w-md perspective-[1000px] cursor-pointer">
+        <!-- 3D-styled Tactile Card Container with Specular Tilt Effect -->
+        <div id="loyalty-tilt-container" class="w-full max-w-md perspective-[1000px] cursor-pointer">
           <div
-            id="royalty-tilt-card"
+            id="loyalty-tilt-card"
             class="relative aspect-[1.586/1] w-full rounded-2xl p-7 md:p-8 bg-gradient-to-br from-[#1E1916] via-[#14100E] to-[#26211C] text-ivory shadow-2xl border border-gold/35 overflow-hidden flex flex-col justify-between transition-transform duration-200 ease-out will-change-transform"
           >
             <!-- Specular Glare / Light Reflection Overlay -->
@@ -123,7 +126,7 @@ const whatsappEarlyAccessUrl = `https://wa.me/918699766654?text=${encodeURICompo
                 Privilege Card
               </span>
               <p class="font-serif text-2xl sm:text-3xl tracking-wide font-bold sm:font-semibold text-ivory">
-                Clubhouse Royalty
+                Clubhouse Loyalty
               </p>
             </div>
 
@@ -152,9 +155,9 @@ const whatsappEarlyAccessUrl = `https://wa.me/918699766654?text=${encodeURICompo
 </section>
 
 <script>
-  function setupRoyaltyTilt() {
-    const container = document.getElementById('royalty-tilt-container');
-    const card = document.getElementById('royalty-tilt-card');
+  function setupLoyaltyTilt() {
+    const container = document.getElementById('loyalty-tilt-container');
+    const card = document.getElementById('loyalty-tilt-card');
     const glare = document.getElementById('card-glare');
 
     if (!container || !card || !glare) return;
@@ -216,8 +219,8 @@ const whatsappEarlyAccessUrl = `https://wa.me/918699766654?text=${encodeURICompo
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupRoyaltyTilt);
+    document.addEventListener('DOMContentLoaded', setupLoyaltyTilt);
   } else {
-    setupRoyaltyTilt();
+    setupLoyaltyTilt();
   }
 </script>
