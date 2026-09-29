@@ -34,36 +34,36 @@ const marqueeItems = [...brands, ...brands, ...brands, ...brands];
 <div class="relative py-4 sm:py-5 md:py-6 bg-ivory-muted/60 border-y border-sage/20 overflow-hidden select-none" aria-hidden="true">
   <div class="marquee-track flex whitespace-nowrap will-change-transform">
     {/* First copy */}
-    <div class="flex items-center gap-10 md:gap-16 lg:gap-20 animate-marquee shrink-0">
+    <div class="flex items-center gap-8 sm:gap-12 md:gap-16 animate-marquee shrink-0">
       {marqueeItems.map((brand) => (
-        <div class="flex items-center gap-10 md:gap-16 lg:gap-20">
+        <Fragment>
           <img
             src={brand.src}
             alt={brand.alt}
-            class={`${brand.heightClass} w-auto object-contain opacity-85 hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)]`}
+            class={`${brand.heightClass} w-auto object-contain opacity-85 hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)] shrink-0`}
             width={brand.width}
             height={brand.height}
             loading="lazy"
           />
-          <span class="text-gold/70 text-xs sm:text-sm select-none">✦</span>
-        </div>
+          <span class="text-gold/70 text-xs sm:text-sm select-none leading-none inline-flex items-center justify-center shrink-0 self-center">✦</span>
+        </Fragment>
       ))}
     </div>
 
     {/* Duplicate copy for seamless infinite loop */}
-    <div class="flex items-center gap-10 md:gap-16 lg:gap-20 animate-marquee shrink-0" aria-hidden="true">
+    <div class="flex items-center gap-8 sm:gap-12 md:gap-16 animate-marquee shrink-0" aria-hidden="true">
       {marqueeItems.map((brand) => (
-        <div class="flex items-center gap-10 md:gap-16 lg:gap-20">
+        <Fragment>
           <img
             src={brand.src}
             alt={brand.alt}
-            class={`${brand.heightClass} w-auto object-contain opacity-85 hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)]`}
+            class={`${brand.heightClass} w-auto object-contain opacity-85 hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)] shrink-0`}
             width={brand.width}
             height={brand.height}
             loading="lazy"
           />
-          <span class="text-gold/70 text-xs sm:text-sm select-none">✦</span>
-        </div>
+          <span class="text-gold/70 text-xs sm:text-sm select-none leading-none inline-flex items-center justify-center shrink-0 self-center">✦</span>
+        </Fragment>
       ))}
     </div>
   </div>

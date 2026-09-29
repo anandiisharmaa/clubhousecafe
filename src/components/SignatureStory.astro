@@ -1,47 +1,74 @@
 ---
-import OptimizedImage from './OptimizedImage.astro';
-
-interface StoryBeat {
-  num: string;
-  eyebrow: string;
-  title: string;
-  body: string;
-  imageId: string;
-  tag: string;
+// In-House Brand Family of Clubhouse: Arth (Banquet 200+ Pax) & Koko (Bar 50 Pax) · Jalandhar
+interface InhouseBrand {
+  id: string;
+  name: string;
+  tagline: string;
+  category: string;
+  capacity: string;
+  location: string;
+  description: string;
+  phone: string;
+  phoneFormatted: string;
+  phoneHref: string;
+  whatsappHref: string;
+  logoSrc: string;
+  logoAlt: string;
+  logoHeightClass: string;
+  primaryImage: string;
+  features: string[];
 }
 
-const beats: StoryBeat[] = [
+const inhouseBrands: InhouseBrand[] = [
   {
-    num: '01',
-    eyebrow: 'Culinary Devotion',
-    title: 'Good Food.',
-    body: 'Wood-fired sourdough crusts blistered to perfection, velvety Aleppo chili poached eggs, and vibrant plates crafted fresh from scratch every day.',
-    imageId: 'buratta-neapolitan-pizza',
-    tag: 'Artisan Kitchen',
+    id: 'arth-banquet',
+    name: 'Arth',
+    tagline: 'Banquet by Clubhouse',
+    category: 'Grand Celebrations & Events',
+    capacity: '200+ Pax',
+    location: 'Model Town, Jalandhar',
+    description:
+      'A luxury banquet hall designed for your special occasions. Whether you are hosting a wedding function, birthday, anniversary, or corporate event, Arth offers comfortable seating for 200+ guests, beautiful decor, and delicious food.',
+    phone: '8130035508',
+    phoneFormatted: '+91 81300 35508',
+    phoneHref: 'tel:+918130035508',
+    whatsappHref:
+      'https://wa.me/918130035508?text=Hello%20Arth%20by%20Clubhouse%2C%20I%20would%20like%20to%20inquire%20about%20booking%20the%20banquet%20hall.',
+    logoSrc: '/images/inhouse/logo-arth-clean.webp',
+    logoAlt: 'Arth - Banquet by Clubhouse Logo',
+    logoHeightClass: 'h-16 sm:h-20 md:h-24',
+    primaryImage: '/images/inhouse/arth-banquet-hall.webp',
+    features: [
+      'Fits 200+ Guests Comfortably',
+      'Warm Ambience & Modern Decor',
+      'Fresh Multi-Cuisine Food Menus',
+      'Dedicated Event & Service Staff',
+    ],
   },
   {
-    num: '02',
-    eyebrow: 'Precision & Ritual',
-    title: 'Good Coffee.',
-    body: 'Carefully extracted roasts, silky microfoam, ceremonial Uji matcha, and refreshing iced cold brews designed for true coffee enthusiasts.',
-    imageId: 'strawberry-matcha-latte',
-    tag: 'Slow Brew Bar',
-  },
-  {
-    num: '03',
-    eyebrow: 'Shared Moments',
-    title: 'Good Company.',
-    body: 'Sunlit marble tables, cozy fluted sage corners, and conversations that linger through lazy afternoons and late-night cravings.',
-    imageId: 'avocado-toast',
-    tag: 'The Gathering Space',
-  },
-  {
-    num: '04',
-    eyebrow: 'Our Living Promise',
-    title: "That's Clubhouse.",
-    body: 'A sanctuary designed for unhurried living. Welcome to your boutique home in Jalandhar and Amritsar, Punjab.',
-    imageId: 'teddy-mousse',
-    tag: 'Flagship Living',
+    id: 'koko-bar',
+    name: 'Koko',
+    tagline: 'Bar by Clubhouse',
+    category: 'Private Cocktail Bar & Lounge',
+    capacity: '50 Pax',
+    location: 'Model Town, Jalandhar',
+    description:
+      'An intimate private bar and lounge for your parties and evening gatherings. Host up to 50 guests with handcrafted cocktails, great music, tasty bar snacks, and a cozy private party vibe.',
+    phone: '08699766654',
+    phoneFormatted: '+91 86997 66654',
+    phoneHref: 'tel:08699766654',
+    whatsappHref:
+      'https://wa.me/918699766654?text=Hello%20Koko%20by%20Clubhouse%2C%20I%20would%20like%20to%20book%20the%20bar%20for%20a%20private%20event.',
+    logoSrc: '/images/inhouse/logo-koko-clean.webp',
+    logoAlt: 'Koko - Bar by Clubhouse Logo',
+    logoHeightClass: 'h-20 sm:h-24 md:h-28',
+    primaryImage: '/images/inhouse/koko-bar-hero.webp',
+    features: [
+      'Private Space for 50 Guests',
+      'Handcrafted Cocktails & Drinks',
+      'Great Sound System & Music',
+      'Delicious Finger Food & Snacks',
+    ],
   },
 ];
 ---
@@ -49,7 +76,7 @@ const beats: StoryBeat[] = [
 <section
   id="signature-story"
   class="relative py-20 md:py-28 px-6 md:px-12 lg:px-16 bg-espresso text-ivory overflow-hidden content-auto"
-  aria-label="Clubhouse Signature Story"
+  aria-label="In-House Brands of Clubhouse"
 >
   <!-- Ambient Warmth Orbs -->
   <div class="pointer-events-none absolute inset-0 overflow-hidden z-0" aria-hidden="true">
@@ -57,106 +84,114 @@ const beats: StoryBeat[] = [
     <div class="absolute -bottom-32 left-10 w-[500px] h-[500px] rounded-full bg-gold/10 blur-[130px]"></div>
   </div>
 
-  <!-- Minimal Whisper-Soft Background Coffee Watermarks (Very low opacity, strictly in outer margins) -->
-  <div class="pointer-events-none absolute inset-0 overflow-hidden z-0 select-none" aria-hidden="true">
-    <!-- Top-Right Far Margin: Delicate Coffee Bean Outline -->
-    <div class="absolute right-[4%] top-[6%] rotate-25 opacity-[0.08] text-gold-light">
-      <svg class="w-16 h-16 sm:w-20 sm:h-20" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
-        <path d="M7 16C7 9.9 11 5 16 5C21 5 25 9.9 25 16C25 22.1 21 27 16 27C11 27 7 22.1 7 16Z" />
-        <path d="M16 6C13.5 10 18.5 22 16 26" />
-      </svg>
-    </div>
-
-    <!-- Mid-Left Far Margin: Minimal Steaming Cup Silhouette -->
-    <div class="hidden lg:block absolute left-[2%] top-[45%] -rotate-12 opacity-[0.07] text-gold-light">
-      <svg class="w-14 h-14" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M14 6Q12 8 14 10" />
-        <path d="M19 5Q17 7 19 9" />
-        <path d="M8 12H26V18C26 22 23 25 17 25C11 25 8 22 8 18V12Z" />
-        <path d="M26 14H28C30 14 31 15 31 17C31 19 30 20 28 20H26" />
-        <path d="M6 27C11 29 23 29 28 27" />
-      </svg>
-    </div>
-
-    <!-- Bottom-Right Far Margin: Minimal Bean Pair -->
-    <div class="absolute right-[3%] bottom-[8%] -rotate-20 opacity-[0.07] text-gold-light">
-      <svg class="w-16 h-16" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
-        <g transform="rotate(-15 14 18)">
-          <path d="M9 18C9 13 11.5 9 14 9C16.5 9 19 13 19 18C19 23 16.5 27 14 27C11.5 27 9 23 9 18Z" />
-          <path d="M14 10C12.5 13.5 15.5 22.5 14 26" />
-        </g>
-        <g transform="rotate(35 26 22)">
-          <path d="M21 22C21 17.5 23.5 14 26 14C28.5 14 31 17.5 31 22C31 26.5 28.5 30 26 30C23.5 30 21 26.5 21 22Z" />
-          <path d="M26 15C24.8 18 27.2 26 26 29" />
-        </g>
-      </svg>
-    </div>
-  </div>
-
   <div class="max-w-7xl mx-auto relative z-10">
     <!-- Header -->
-    <div class="text-center max-w-2xl mx-auto mb-16 md:mb-20">
-      <span class="text-[10px] uppercase tracking-[0.35em] text-gold-light font-semibold block mb-2">
-        The Clubhouse Philosophy
-      </span>
-      <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-ivory font-bold sm:font-semibold leading-tight">
-        A Symphony of Atmosphere & Taste
+    <div class="text-center max-w-3xl mx-auto mb-16 md:mb-24">
+      <div class="inline-flex items-center gap-3 mb-3">
+        <span class="w-8 h-[1px] bg-gold"></span>
+        <span class="text-[11px] uppercase tracking-[0.3em] font-semibold text-gold-light">
+          In-House Brands · Jalandhar
+        </span>
+        <span class="w-8 h-[1px] bg-gold"></span>
+      </div>
+      <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-ivory font-bold sm:font-semibold leading-tight">
+        The Clubhouse <br class="hidden sm:inline" />
+        <span class="italic text-gold font-normal">Hospitality Family.</span>
       </h2>
-      <div class="w-12 h-[1px] bg-gold/40 mx-auto mt-4"></div>
+      <p class="font-sans text-sm sm:text-base text-ivory/70 mt-4 max-w-xl mx-auto leading-relaxed">
+        Looking to host an event? From grand family celebrations to private parties and drinks, we have the perfect place for you.
+      </p>
     </div>
 
-    <!-- 4 Tightly Choreographed Panels (Clean, Uncluttered, Pure Typography) -->
-    <div class="space-y-16 md:space-y-24">
-      {beats.map((beat, idx) => (
-        <div
-          class={`story-panel grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center ${
+    <!-- 2 Master Showcase Panels (Arth & Koko) -->
+    <div class="space-y-20 md:space-y-32">
+      {inhouseBrands.map((brand, idx) => (
+        <article
+          class={`story-panel grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center ${
             idx % 2 === 1 ? 'lg:flex-row-reverse' : ''
           }`}
         >
-          <!-- Clean Typography Column -->
-          <div class={`lg:col-span-6 ${idx % 2 === 1 ? 'lg:order-2 lg:pl-6' : 'lg:pr-6'}`}>
-            <div class="flex items-center gap-3 mb-3">
-              <span class="text-xs uppercase tracking-[0.25em] text-gold-light font-semibold">
-                {beat.num} / 04
-              </span>
-              <span class="w-6 h-[1px] bg-gold/40"></span>
-              <span class="text-[11px] uppercase tracking-[0.2em] text-ivory/60">
-                {beat.eyebrow}
+          <!-- Content Column -->
+          <div class={`lg:col-span-6 ${idx % 2 === 1 ? 'lg:order-2 lg:pl-4' : 'lg:pr-4'}`}>
+            <!-- Location Eyebrow -->
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-6 h-[1px] bg-gold/60"></span>
+              <span class="text-xs uppercase tracking-[0.25em] text-gold-light font-medium">
+                {brand.location}
               </span>
             </div>
 
-            <h3 class="story-panel-title font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-ivory font-bold sm:font-semibold tracking-tight leading-[1.05] mb-4">
-              {beat.title}
-            </h3>
+            <!-- Brand Logo as Primary Name (Prominent & Clean) -->
+            <div class="mb-6 flex items-center">
+              <h3 class="sr-only">{brand.name} - {brand.tagline}</h3>
+              <img
+                src={brand.logoSrc}
+                alt={brand.logoAlt}
+                class={`story-panel-title ${brand.logoHeightClass} w-auto object-contain drop-shadow-xl`}
+                loading="lazy"
+              />
+            </div>
 
-            <p class="font-sans text-sm sm:text-base text-ivory/75 leading-relaxed max-w-lg mb-6 font-normal">
-              {beat.body}
+            <p class="font-sans text-sm sm:text-base text-ivory/80 leading-relaxed max-w-xl mb-6 font-normal">
+              {brand.description}
             </p>
 
-            <div class="inline-flex items-center gap-3 text-xs tracking-widest uppercase text-gold-light border-b border-gold/30 pb-1">
-              <span>{beat.tag}</span>
+            <!-- Specs Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+              {brand.features.map((feature) => (
+                <div class="flex items-center gap-2.5 text-xs sm:text-sm text-ivory/85">
+                  <span class="text-gold text-xs">✦</span>
+                  <span>{feature}</span>
+                </div>
+              ))}
+            </div>
+
+            <!-- CTAs: Call & WhatsApp -->
+            <div class="flex flex-wrap items-center gap-4 pt-2">
+              <a
+                href={brand.phoneHref}
+                class="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-gold text-espresso font-semibold text-xs tracking-wider uppercase hover:bg-gold-light transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5"
+              >
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                <span>Call {brand.phoneFormatted}</span>
+              </a>
+
+              <a
+                href={brand.whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-white/20 text-ivory text-xs tracking-wider uppercase font-medium hover:bg-white/10 hover:border-white/40 transition-all duration-200"
+              >
+                <span>Inquire on WhatsApp →</span>
+              </a>
             </div>
           </div>
 
-          <!-- Image Column -->
+          <!-- Imagery Column -->
           <div class={`lg:col-span-6 ${idx % 2 === 1 ? 'lg:order-1' : ''}`}>
-            <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-white/10 aspect-[16/10] bg-espresso-light">
-              <OptimizedImage
-                id={beat.imageId}
-                class="w-full h-full"
-                imgClass="story-panel-img w-full h-full object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                dataCursor="view"
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-white/10 aspect-[4/3] bg-espresso-light group">
+              <img
+                src={brand.primaryImage}
+                alt={`${brand.name} ${brand.tagline} interior in Jalandhar`}
+                class="story-panel-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                loading="lazy"
               />
-              <div class="absolute inset-0 bg-gradient-to-t from-espresso/60 via-transparent to-transparent pointer-events-none"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-espresso/80 via-transparent to-transparent pointer-events-none"></div>
 
-              <div class="absolute bottom-4 left-5 right-5 flex items-center justify-between text-ivory/80 text-xs">
-                <span class="font-serif italic text-gold-light">{beat.title}</span>
-                <span class="uppercase tracking-widest text-[10px]">Clubhouse Café</span>
+              <!-- Overlaid badge bottom -->
+              <div class="absolute bottom-5 left-6 right-6 flex items-center justify-between text-xs text-ivory/90">
+                <span class="font-serif italic text-gold-light text-sm sm:text-base font-medium">
+                  {brand.name} · {brand.capacity}
+                </span>
+                <span class="text-[11px] uppercase tracking-widest text-ivory/70 font-sans">
+                  {brand.location}
+                </span>
               </div>
             </div>
           </div>
-        </div>
+        </article>
       ))}
     </div>
   </div>
