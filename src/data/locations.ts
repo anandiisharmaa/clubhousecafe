@@ -29,7 +29,7 @@ export const locationsData: LocationItem[] = [
     hours: '10:30 AM to 12 AM',
     mapsUrl: 'https://maps.app.goo.gl/6p3MRjtao5tJF8ni7',
     description:
-      'Our flagship sanctuary in Model Town, thoughtfully designed with fluted sage seating, Carrara marble, warm timber and tranquil daylight.',
+      'Our main café in Model Town, Jalandhar. A warm and inviting space to enjoy fresh coffee, delicious bakery treats, and great food with family and friends.',
   },
   {
     id: 'amritsar',
@@ -41,6 +41,6 @@ export const locationsData: LocationItem[] = [
     addressLine2: 'Details will be announced shortly',
     fullAddress: 'Amritsar, Punjab',
     description:
-      'We are crafting our second home in the holy city of Amritsar. Address, hours, and opening dates will be announced soon.',
+      'We are bringing Clubhouse to Amritsar soon. Opening dates, exact location, and timings will be announced shortly.',
   },
 ];

@@ -8,10 +8,10 @@ interface InhouseBrand {
   capacity: string;
   location: string;
   description: string;
-  phone: string;
-  phoneFormatted: string;
-  phoneHref: string;
-  whatsappHref: string;
+  phone?: string;
+  phoneFormatted?: string;
+  phoneHref?: string;
+  whatsappHref?: string;
   logoSrc: string;
   logoAlt: string;
   logoHeightClass: string;
@@ -29,11 +29,6 @@ const inhouseBrands: InhouseBrand[] = [
     location: 'Model Town, Jalandhar',
     description:
       'A luxury banquet hall designed for your special occasions. Whether you are hosting a wedding function, birthday, anniversary, or corporate event, Arth offers comfortable seating for 200+ guests, beautiful decor, and delicious food.',
-    phone: '8130035508',
-    phoneFormatted: '+91 81300 35508',
-    phoneHref: 'tel:+918130035508',
-    whatsappHref:
-      'https://wa.me/918130035508?text=Hello%20Arth%20by%20Clubhouse%2C%20I%20would%20like%20to%20inquire%20about%20booking%20the%20banquet%20hall.',
     logoSrc: '/images/inhouse/logo-arth-clean.webp',
     logoAlt: 'Arth - Banquet by Clubhouse Logo',
     logoHeightClass: 'h-16 sm:h-20 md:h-24',
@@ -113,14 +108,6 @@ const inhouseBrands: InhouseBrand[] = [
         >
           <!-- Content Column -->
           <div class={`lg:col-span-6 ${idx % 2 === 1 ? 'lg:order-2 lg:pl-4' : 'lg:pr-4'}`}>
-            <!-- Location Eyebrow -->
-            <div class="flex items-center gap-3 mb-4">
-              <span class="w-6 h-[1px] bg-gold/60"></span>
-              <span class="text-xs uppercase tracking-[0.25em] text-gold-light font-medium">
-                {brand.location}
-              </span>
-            </div>
-
             <!-- Brand Logo as Primary Name (Prominent & Clean) -->
             <div class="mb-6 flex items-center">
               <h3 class="sr-only">{brand.name} - {brand.tagline}</h3>
@@ -147,47 +134,66 @@ const inhouseBrands: InhouseBrand[] = [
             </div>
 
             <!-- CTAs: Call & WhatsApp -->
-            <div class="flex flex-wrap items-center gap-4 pt-2">
-              <a
-                href={brand.phoneHref}
-                class="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-gold text-espresso font-semibold text-xs tracking-wider uppercase hover:bg-gold-light transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5"
-              >
-                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-                <span>Call {brand.phoneFormatted}</span>
-              </a>
+            {brand.phoneHref && (
+              <div class="flex flex-wrap items-center gap-4 pt-2">
+                <a
+                  href={brand.phoneHref}
+                  class="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-gold text-espresso font-semibold text-xs tracking-wider uppercase hover:bg-gold-light transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5"
+                >
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  <span>Call {brand.phoneFormatted}</span>
+                </a>
 
-              <a
-                href={brand.whatsappHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-white/20 text-ivory text-xs tracking-wider uppercase font-medium hover:bg-white/10 hover:border-white/40 transition-all duration-200"
-              >
-                <span>Inquire on WhatsApp →</span>
-              </a>
-            </div>
+                {brand.whatsappHref && (
+                  <a
+                    href={brand.whatsappHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-white/20 text-ivory text-xs tracking-wider uppercase font-medium hover:bg-white/10 hover:border-white/40 transition-all duration-200"
+                  >
+                    <span>Inquire on WhatsApp →</span>
+                  </a>
+                )}
+              </div>
+            )}
           </div>
 
-          <!-- Imagery Column -->
+          <!-- Imagery Column with Ambient Shadow Glow Effect -->
           <div class={`lg:col-span-6 ${idx % 2 === 1 ? 'lg:order-1' : ''}`}>
-            <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-white/10 aspect-[4/3] bg-espresso-light group">
-              <img
-                src={brand.primaryImage}
-                alt={`${brand.name} ${brand.tagline} interior in Jalandhar`}
-                class="story-panel-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                loading="lazy"
-              />
-              <div class="absolute inset-0 bg-gradient-to-t from-espresso/80 via-transparent to-transparent pointer-events-none"></div>
+            <div class="relative group">
+              <!-- Golden Ambient Glow Aura behind image -->
+              <div
+                class="absolute -inset-3 sm:-inset-5 rounded-[36px] bg-gradient-to-tr from-gold/35 via-gold-dark/25 to-gold-light/25 blur-2xl sm:blur-3xl opacity-65 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 pointer-events-none -z-10"
+                aria-hidden="true"
+              ></div>
 
-              <!-- Overlaid badge bottom -->
-              <div class="absolute bottom-5 left-6 right-6 flex items-center justify-between text-xs text-ivory/90">
-                <span class="font-serif italic text-gold-light text-sm sm:text-base font-medium">
-                  {brand.name} · {brand.capacity}
-                </span>
-                <span class="text-[11px] uppercase tracking-widest text-ivory/70 font-sans">
-                  {brand.location}
-                </span>
+              <!-- Deep Cast Shadow behind image -->
+              <div
+                class="absolute inset-2 sm:inset-4 translate-y-6 sm:translate-y-8 rounded-3xl bg-black/85 blur-2xl -z-10 pointer-events-none"
+                aria-hidden="true"
+              ></div>
+
+              <!-- Image Tile Container -->
+              <div class="relative rounded-3xl overflow-hidden aspect-[4/3] bg-espresso-light border border-gold/30 group-hover:border-gold/55 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9),0_0_30px_rgba(200,168,118,0.2)] transition-all duration-500 group-hover:-translate-y-1">
+                <img
+                  src={brand.primaryImage}
+                  alt={`${brand.name} ${brand.tagline} interior in Jalandhar`}
+                  class="story-panel-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-espresso/80 via-transparent to-transparent pointer-events-none"></div>
+
+                <!-- Overlaid badge bottom -->
+                <div class="absolute bottom-5 left-6 right-6 flex items-center justify-between text-xs text-ivory/90">
+                  <span class="font-serif italic text-gold-light text-sm sm:text-base font-medium drop-shadow-md">
+                    {brand.name} · {brand.capacity}
+                  </span>
+                  <span class="text-[11px] uppercase tracking-widest text-ivory/80 font-sans font-medium drop-shadow-md">
+                    {brand.location}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
