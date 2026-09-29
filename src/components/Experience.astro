@@ -7,7 +7,8 @@ interface ExperienceMoment {
   timeframe: string;
   title: string;
   description: string;
-  imageId: string;
+  imageId?: string;
+  imageSrc?: string;
   accent: string;
 }
 
@@ -18,9 +19,9 @@ const moments: ExperienceMoment[] = [
     timeframe: '10:30 AM — 12:00 PM',
     title: 'Morning Coffee',
     description:
-      'Freshly brewed hot coffee, warm flaky chocolate croissants, and a calm, cozy atmosphere to start your day.',
-    imageId: 'belgian-croissant',
-    accent: 'Fresh Bakery & Coffee',
+      'Freshly brewed coffee, signature iced drinks, and a calm, cozy atmosphere to start your day.',
+    imageSrc: '/images/experience/morning-coffee-drinks.webp',
+    accent: 'Specialty Coffee & Drinks',
   },
   {
     id: 'lazy-lunches',
@@ -162,21 +163,31 @@ const moments: ExperienceMoment[] = [
     <!-- Interactive Track Container -->
     <div
       id="experience-carousel"
-      class="flex gap-5 md:gap-8 overflow-x-auto scrollbar-none snap-x snap-mandatory py-4 -mx-6 px-6 md:-mx-12 md:px-12 lg:-mx-16 lg:px-16 scroll-smooth"
+      class="flex gap-4 sm:gap-6 md:gap-8 overflow-x-auto scrollbar-none snap-x snap-mandatory py-4 -mx-6 px-6 md:-mx-12 md:px-12 lg:-mx-16 lg:px-16 scroll-smooth scroll-px-6 md:scroll-px-12 lg:scroll-px-16"
     >
       {moments.map((moment) => (
         <article
-          class="experience-card snap-start w-[84vw] sm:w-[420px] lg:w-[480px] rounded-3xl bg-ivory border border-sage/20 shadow-lg overflow-hidden flex-shrink-0 flex flex-col group transition-all duration-300 hover:shadow-2xl hover:border-sage/40"
+          class="experience-card snap-center sm:snap-start w-[calc(100vw-3rem)] sm:w-[420px] lg:w-[480px] rounded-3xl bg-ivory border border-sage/20 shadow-lg overflow-hidden flex-shrink-0 flex flex-col group transition-all duration-300 hover:shadow-2xl hover:border-sage/40"
         >
           <!-- Image Showcase -->
           <div class="relative aspect-[16/10] overflow-hidden bg-ivory-muted">
-            <OptimizedImage
-              id={moment.imageId}
-              class="w-full h-full"
-              imgClass="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              sizes="(max-width: 768px) 85vw, 480px"
-              dataCursor="view"
-            />
+            {moment.imageSrc ? (
+              <img
+                src={moment.imageSrc}
+                alt={`${moment.title} at Clubhouse Café`}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <OptimizedImage
+                id={moment.imageId!}
+                class="w-full h-full"
+                imgClass="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                sizes="(max-width: 768px) 100vw, 480px"
+                dataCursor="view"
+              />
+            )}
             <div class="absolute inset-0 bg-gradient-to-t from-espresso/45 via-transparent to-transparent pointer-events-none"></div>
 
             <div class="absolute bottom-4 left-5 right-5 flex items-center justify-between text-ivory">
@@ -242,12 +253,23 @@ const moments: ExperienceMoment[] = [
 
     if (!carousel) return;
 
+    const cards = carousel.querySelectorAll('.experience-card');
+
     function updateDots() {
-      const scrollLeft = carousel?.scrollLeft || 0;
-      const firstCard = carousel?.firstElementChild as HTMLElement | null;
-      const cardWidth = firstCard?.clientWidth || 340;
-      const gap = 20;
-      const activeIdx = Math.max(0, Math.min(dotBars.length - 1, Math.round(scrollLeft / (cardWidth + gap))));
+      if (!carousel) return;
+      const carouselCenter = carousel.scrollLeft + carousel.clientWidth / 2;
+      let activeIdx = 0;
+      let minDistance = Infinity;
+
+      cards.forEach((card, idx) => {
+        const cardElem = card as HTMLElement;
+        const cardCenter = cardElem.offsetLeft + cardElem.clientWidth / 2;
+        const dist = Math.abs(carouselCenter - cardCenter);
+        if (dist < minDistance) {
+          minDistance = dist;
+          activeIdx = idx;
+        }
+      });
 
       dotBars.forEach((bar, idx) => {
         if (idx === activeIdx) {
@@ -261,21 +283,23 @@ const moments: ExperienceMoment[] = [
     }
 
     prevBtn?.addEventListener('click', () => {
-      const cardWidth = carousel.firstElementChild?.clientWidth || 340;
-      carousel.scrollBy({ left: -(cardWidth + 20), behavior: 'smooth' });
+      const firstCard = carousel.firstElementChild as HTMLElement | null;
+      const cardWidth = firstCard?.clientWidth || 340;
+      carousel.scrollBy({ left: -(cardWidth + 16), behavior: 'smooth' });
     });
 
     nextBtn?.addEventListener('click', () => {
-      const cardWidth = carousel.firstElementChild?.clientWidth || 340;
-      carousel.scrollBy({ left: cardWidth + 20, behavior: 'smooth' });
+      const firstCard = carousel.firstElementChild as HTMLElement | null;
+      const cardWidth = firstCard?.clientWidth || 340;
+      carousel.scrollBy({ left: cardWidth + 16, behavior: 'smooth' });
     });
 
     dotBtns.forEach((btn, idx) => {
       btn.addEventListener('click', () => {
-        const firstCard = carousel.firstElementChild as HTMLElement | null;
-        const cardWidth = firstCard?.clientWidth || 340;
-        const gap = 20;
-        carousel.scrollTo({ left: idx * (cardWidth + gap), behavior: 'smooth' });
+        const targetCard = cards[idx] as HTMLElement | undefined;
+        if (targetCard) {
+          targetCard.scrollIntoView({ behavior: 'smooth', inline: window.innerWidth < 640 ? 'center' : 'start', block: 'nearest' });
+        }
       });
     });
 
