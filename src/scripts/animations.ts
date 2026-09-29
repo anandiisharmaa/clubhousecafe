@@ -102,54 +102,6 @@ export function initAnimations() {
       });
     }
 
-    // --- About Section Word Sequence & Parallax ---
-    const aboutWords = document.querySelectorAll('.about-pillar-word');
-    if (aboutWords.length > 0) {
-      gsap.fromTo(
-        aboutWords,
-        { opacity: 0.18, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          stagger: 0.3,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: '#about-pillars',
-            start: 'top 75%',
-            end: 'bottom 45%',
-            scrub: 0.5,
-          },
-        }
-      );
-    }
-
-    // About floating images subtle parallax
-    const aboutImage1 = document.querySelector('.about-float-img-1');
-    const aboutImage2 = document.querySelector('.about-float-img-2');
-    if (aboutImage1) {
-      gsap.to(aboutImage1, {
-        y: -40,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '#about',
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: true,
-        },
-      });
-    }
-    if (aboutImage2) {
-      gsap.to(aboutImage2, {
-        y: 40,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '#about',
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: true,
-        },
-      });
-    }
 
 
     // --- Signature Cinematic Story Transitions ---

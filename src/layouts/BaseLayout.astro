@@ -107,7 +107,7 @@ const restaurantSchema = {
         'Saturday',
         'Sunday',
       ],
-      opens: '09:30',
+      opens: '10:30',
       closes: '00:00',
     },
   ],
@@ -295,12 +295,8 @@ const jsonLd = {
     <script>
       import { initLenis } from '@/scripts/lenis';
       import { initAnimations } from '@/scripts/animations';
-      import { initLiveStatus } from '@/scripts/status';
 
       function startApp() {
-        // Immediate priority: live status & essential UI
-        initLiveStatus();
-
         // Defer heavier GSAP & Lenis initialization so first paint is instantaneous
         if ('requestIdleCallback' in window) {
           window.requestIdleCallback(() => {

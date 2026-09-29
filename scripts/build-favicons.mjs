@@ -30,29 +30,14 @@ function createIco(images) {
 }
 
 async function build() {
-  console.log('Building Clubhouse Café Favicons & Chrome Browser Icons...');
+  console.log('Building Clubhouse Café Favicons & Chrome Browser Icons from white logo...');
 
-  // High-res source
+  // High-res source requested by user
   const sourcePath = path.resolve('Image Assets/clubhouse cafe_logo-white (1).png');
 
-  // Extract Crest: bounds in 6000x3375 are left: 2475, top: 1100, width: 1110, height: 430
-  const crestWhite = await sharp(sourcePath)
-    .extract({ left: 2475, top: 1100, width: 1110, height: 430 })
-    .toBuffer();
-
-  // Create Gold version of Crest (#E5C278 / #D8B467 gradient tone)
-  const { data: crestData, info: crestInfo } = await sharp(crestWhite)
-    .raw()
-    .toBuffer({ resolveWithObject: true });
-
-  const crestGoldData = Buffer.from(crestData);
-  for (let i = 0; i < crestGoldData.length; i += 4) {
-    crestGoldData[i] = 226;     // R = #E2
-    crestGoldData[i + 1] = 199; // G = #C7
-    crestGoldData[i + 2] = 133; // B = #85
-  }
-  const crestGoldBuf = await sharp(crestGoldData, { raw: crestInfo })
-    .png()
+  // Trim transparent padding to get the complete full white logo
+  const logoWhiteBuf = await sharp(sourcePath)
+    .trim()
     .toBuffer();
 
   // Background Badge (512x512) with luxury espresso gradient & gold trim
@@ -83,16 +68,16 @@ async function build() {
   </svg>
   `;
 
-  // Scale crest gold to fit prominently inside badge (360px wide)
-  const crestGoldResized = await sharp(crestGoldBuf)
-    .resize(360, null, { fit: 'inside' })
+  // Scale the full white logo to fit inside badge prominently (440px wide)
+  const logoWhiteResized = await sharp(logoWhiteBuf)
+    .resize(440, null, { fit: 'inside' })
     .toBuffer();
 
   // Generate Master 512x512 Badge Icon
   const master512Buf = await sharp(Buffer.from(badgeSvg))
     .composite([
       {
-        input: crestGoldResized,
+        input: logoWhiteResized,
         gravity: 'center'
       }
     ])
@@ -111,10 +96,10 @@ async function build() {
   const appleTouchBuf = await sharp(master512Buf).resize(180, 180).png().toBuffer();
   await sharp(appleTouchBuf).toFile('public/apple-touch-icon.png');
 
-  // Save 48x48, 32x32, 16x16
-  const buf48 = await sharp(master512Buf).resize(48, 48).png().toBuffer();
-  const buf32 = await sharp(master512Buf).resize(32, 32).png().toBuffer();
-  const buf16 = await sharp(master512Buf).resize(16, 16).png().toBuffer();
+  // Save 48x48, 32x32, 16x16 with subtle sharpening for crisp text at small dimensions
+  const buf48 = await sharp(master512Buf).resize(48, 48, { kernel: 'lanczos3' }).sharpen().png().toBuffer();
+  const buf32 = await sharp(master512Buf).resize(32, 32, { kernel: 'lanczos3' }).sharpen().png().toBuffer();
+  const buf16 = await sharp(master512Buf).resize(16, 16, { kernel: 'lanczos3' }).sharpen().png().toBuffer();
 
   await sharp(buf48).toFile('public/favicon-48x48.png');
   await sharp(buf32).toFile('public/favicon-32x32.png');
@@ -161,20 +146,6 @@ async function build() {
   };
   fs.writeFileSync('public/site.webmanifest', JSON.stringify(manifest, null, 2));
   console.log('✓ Created public/site.webmanifest');
-
-  // Clean up any test artifacts in public/
-  const tempFiles = [
-    'public/favicon-full-logo-dark.png',
-    'public/favicon-full-logo-trans.png',
-    'public/favicon-crest-trans.png',
-    'public/favicon-crest-badge.png',
-    'public/test-icon-full-logo.png',
-    'public/test-icon-crest.png',
-    'public/test-icon-balanced-logo.png'
-  ];
-  for (const f of tempFiles) {
-    if (fs.existsSync(f)) fs.unlinkSync(f);
-  }
 
   console.log('All favicon and Chrome icon assets generated successfully!');
 }

@@ -26,7 +26,7 @@ export const locationsData: LocationItem[] = [
     fullAddress: 'Ground Floor, The Elite City Center, Model Town Rd, Abadpura, Model Town, Jalandhar, Punjab 144001',
     phone: '086997 66654',
     phoneHref: 'tel:08699766654',
-    hours: '9:30 AM – 12:00 AM',
+    hours: '10:30 AM to 12 AM',
     mapsUrl: 'https://maps.app.goo.gl/6p3MRjtao5tJF8ni7',
     description:
       'Our flagship sanctuary in Model Town, thoughtfully designed with fluted sage seating, Carrara marble, warm timber and tranquil daylight.',

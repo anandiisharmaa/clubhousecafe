@@ -1,47 +1,68 @@
 ---
-// Editorial Infinite Marquee Ribbon (Quiet Luxury Ticker)
-const items = [
-  { text: 'Clubhouse Café Jalandhar', highlight: 'Flagship' },
-  { text: 'Clubhouse Café Amritsar', highlight: 'Coming Soon' },
-  { text: 'Koko by Clubhouse', highlight: 'Patisserie' },
-  { text: 'Arth by Clubhouse', highlight: 'Dining' },
-  { text: 'Clubhouse Café Jalandhar', highlight: 'Model Town' },
-  { text: 'Clubhouse Café Amritsar', highlight: 'Sanctuary' },
-  { text: 'Koko by Clubhouse', highlight: 'Artisanal' },
-  { text: 'Arth by Clubhouse', highlight: 'Experience' },
+// Editorial Infinite Marquee Ribbon (Clubhouse Brand Family: Clubhouse, Koko, Arth)
+const brands = [
+  {
+    name: 'Clubhouse Café',
+    src: '/images/logo-dark-400w.webp',
+    alt: 'Clubhouse Café Logo',
+    heightClass: 'h-6 sm:h-7 md:h-8',
+    width: 120,
+    height: 40,
+  },
+  {
+    name: 'Koko',
+    src: '/images/logo-koko-dark.webp',
+    alt: 'Koko - Bar by Clubhouse Logo',
+    heightClass: 'h-8 sm:h-9 md:h-10',
+    width: 44,
+    height: 44,
+  },
+  {
+    name: 'Arth',
+    src: '/images/logo-arth-gold.webp',
+    alt: 'Arth - Banquet by Clubhouse Logo',
+    heightClass: 'h-7 sm:h-8 md:h-9',
+    width: 70,
+    height: 42,
+  },
 ];
+
+// Repeat 4 times for a wide, continuous track
+const marqueeItems = [...brands, ...brands, ...brands, ...brands];
 ---
 
-<div class="relative py-4 md:py-5 bg-ivory-muted/60 border-y border-sage/20 overflow-hidden select-none" aria-hidden="true">
+<div class="relative py-4 sm:py-5 md:py-6 bg-ivory-muted/60 border-y border-sage/20 overflow-hidden select-none" aria-hidden="true">
   <div class="marquee-track flex whitespace-nowrap will-change-transform">
     {/* First copy */}
-    <div class="flex items-center gap-8 md:gap-12 animate-marquee shrink-0">
-      {items.map((item) => (
-        <div class="flex items-center gap-8 md:gap-12">
-          <span class="font-serif italic text-base sm:text-lg md:text-xl text-espresso/90 tracking-wide font-medium sm:font-normal">
-            {item.text}
-          </span>
-          <span class="w-1.5 h-1.5 rounded-full bg-gold/70"></span>
-          <span class="text-[10px] uppercase tracking-[0.28em] font-semibold text-espresso-soft">
-            {item.highlight}
-          </span>
-          <span class="w-1 h-1 rounded-full bg-gold/50"></span>
+    <div class="flex items-center gap-10 md:gap-16 lg:gap-20 animate-marquee shrink-0">
+      {marqueeItems.map((brand) => (
+        <div class="flex items-center gap-10 md:gap-16 lg:gap-20">
+          <img
+            src={brand.src}
+            alt={brand.alt}
+            class={`${brand.heightClass} w-auto object-contain opacity-85 hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)]`}
+            width={brand.width}
+            height={brand.height}
+            loading="lazy"
+          />
+          <span class="text-gold/70 text-xs sm:text-sm select-none">✦</span>
         </div>
       ))}
     </div>
 
-    {/* Duplicate copy for seamless loop */}
-    <div class="flex items-center gap-8 md:gap-12 animate-marquee shrink-0" aria-hidden="true">
-      {items.map((item) => (
-        <div class="flex items-center gap-8 md:gap-12">
-          <span class="font-serif italic text-base sm:text-lg md:text-xl text-espresso/90 tracking-wide font-medium sm:font-normal">
-            {item.text}
-          </span>
-          <span class="w-1.5 h-1.5 rounded-full bg-gold/70"></span>
-          <span class="text-[10px] uppercase tracking-[0.28em] font-semibold text-espresso-soft">
-            {item.highlight}
-          </span>
-          <span class="w-1 h-1 rounded-full bg-gold/50"></span>
+    {/* Duplicate copy for seamless infinite loop */}
+    <div class="flex items-center gap-10 md:gap-16 lg:gap-20 animate-marquee shrink-0" aria-hidden="true">
+      {marqueeItems.map((brand) => (
+        <div class="flex items-center gap-10 md:gap-16 lg:gap-20">
+          <img
+            src={brand.src}
+            alt={brand.alt}
+            class={`${brand.heightClass} w-auto object-contain opacity-85 hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)]`}
+            width={brand.width}
+            height={brand.height}
+            loading="lazy"
+          />
+          <span class="text-gold/70 text-xs sm:text-sm select-none">✦</span>
         </div>
       ))}
     </div>
@@ -59,7 +80,7 @@ const items = [
   }
 
   .animate-marquee {
-    animation: marquee 38s linear infinite;
+    animation: marquee 36s linear infinite;
   }
 
   .marquee-track:hover .animate-marquee {

@@ -15,12 +15,12 @@ const moments: ExperienceMoment[] = [
   {
     id: 'morning-coffee',
     step: '01',
-    timeframe: '09:30 AM — 12:00 PM',
+    timeframe: '10:30 AM — 12:00 PM',
     title: 'Morning Coffee',
     description:
-      'Tranquil daylight cascading across Carrera marble, the comforting steam of fresh roasts, and warm flaky Belgian chocolate croissants to begin the day slowly.',
+      'Freshly brewed hot coffee, warm flaky chocolate croissants, and a calm, cozy atmosphere to start your day.',
     imageId: 'belgian-croissant',
-    accent: 'Viennoiserie & Espresso',
+    accent: 'Fresh Bakery & Coffee',
   },
   {
     id: 'lazy-lunches',
@@ -28,9 +28,9 @@ const moments: ExperienceMoment[] = [
     timeframe: '12:00 PM — 04:00 PM',
     title: 'Lazy Lunches',
     description:
-      'Midday gatherings that linger. Wood-fired Neapolitan burrata pizzas with blistered crusts, wholesome grain bowls, and garlic Aleppo poached eggs.',
+      'Relaxed afternoons with friends and family. Enjoy hot wood-fired pizzas, healthy bowls, and delicious comfort food.',
     imageId: 'buratta-neapolitan-pizza',
-    accent: 'Neapolitan Sourdough & Brunch',
+    accent: 'Fresh Pizzas & Lunch',
   },
   {
     id: 'golden-hour',
@@ -38,9 +38,9 @@ const moments: ExperienceMoment[] = [
     timeframe: '04:00 PM — 08:00 PM',
     title: 'Golden Hour',
     description:
-      'Warm ambient honey light bathing fluted sage seating. Handcrafted tri-color iced strawberry matcha lattes paired with delicate truffled dimsums.',
+      'Unwind as the evening sets in. Sip on refreshing iced matcha lattes paired with fresh, warm dim sums.',
     imageId: 'strawberry-matcha-latte',
-    accent: 'Artisanal Teas & Small Plates',
+    accent: 'Evening Drinks & Snacks',
   },
   {
     id: 'late-night',
@@ -48,9 +48,9 @@ const moments: ExperienceMoment[] = [
     timeframe: '08:00 PM — 12:00 AM',
     title: 'Late-Night Conversations',
     description:
-      'Laughter that stretches into the midnight hour. Sizzling cast-iron hazelnut fudge brownies, sculpted chocolate teddy mousses, and good company.',
+      'Great conversations that go late into the night. Enjoy sizzling hot chocolate brownies, sweet desserts, and good company.',
     imageId: 'skillet-brownie',
-    accent: 'Skillet Bakes & Midnight Stories',
+    accent: 'Desserts & Late Bites',
   },
 ];
 ---
@@ -200,8 +200,7 @@ const moments: ExperienceMoment[] = [
                 {moment.description}
               </p>
             </div>
-            <div class="mt-6 pt-4 border-t border-sage/15 flex items-center justify-between text-xs text-espresso-soft">
-              <span>Clubhouse Atmosphere</span>
+            <div class="mt-6 pt-4 border-t border-sage/15 flex items-center justify-end text-xs text-espresso-soft">
               <button
                 type="button"
                 data-open-reservation
